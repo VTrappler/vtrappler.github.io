@@ -240,6 +240,14 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+  # _personalprojects
+  - scope:
+      path: ""
+      type: personalprojects
+    values:
+      layout: single
+      author_profile: true
+      commment: true
 
 # Sass/SCSS
 sass:
