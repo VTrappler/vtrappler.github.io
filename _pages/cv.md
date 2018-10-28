@@ -11,9 +11,9 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* General Engineering degree, École Centrale de Lyon, 2017
+* MSc in Mathematical Modelling and Computation, Denmarks Tekniske Universitet (DTU), 2017
+* PhD in Applied Mathematics, Statistics and Probabilities, Université Grenoble Alpes, 2020 (expected)
 
 Work experience
 ======
