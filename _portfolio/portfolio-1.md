@@ -1,6 +1,6 @@
 ---
 title: "France Culture podcasts"
-excerpt: "Dowload FranceCulture podcasts, available on the official website"
+excerpt: "test"
 collection: portfolio
 ---
 
