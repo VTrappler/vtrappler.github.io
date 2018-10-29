@@ -8,6 +8,6 @@ redirect_from:
   - /about.html
 ---
 
-IN CONSTRUCTION
+I'm a PhD student at Université Grenoble Alpes (Grenoble, France), in the Inria research team called AIRSEA.
 
 
