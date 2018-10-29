@@ -17,8 +17,8 @@ Education
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
+* January to July 2017: Master thesis
+  * Inria research team AIRSEA
   * Duties included: Tagging issues
   * Supervisor: Professor Git
 
