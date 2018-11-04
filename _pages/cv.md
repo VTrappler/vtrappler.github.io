@@ -17,19 +17,24 @@ Education
 
 Work experience
 ======
-* January to July 2017: Master thesis
-  * Inria research team AIRSEA
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* January to July 2017: Master thesis: Parameter control in the presence of uncertainties
+  * Within Inria research team AIRSEA
+  * Develop tools of estimation in python and R
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* May to July 2015: Intern 
+  * EDF R&D department, LNHE, France
+  * Duties included: Develop MATLAB tools to better visualize and study numerical simulations performed with TELEMAC3D. Implement the computation of the flushing time of large body of waters 
   
+
+Interest 
+======
+* Data assimilation
+* Uncertainty quantification
+* Robust optimisation
+
 Skills
 ======
-* Skill 1
+* 
 * Skill 2
   * Sub-skill 2.1
   * Sub-skill 2.2
