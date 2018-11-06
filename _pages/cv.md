@@ -26,10 +26,10 @@ Work experience
   * Duties included: Develop MATLAB tools to better visualize and study numerical simulations performed with TELEMAC3D. Implement the computation of the flushing time of large body of waters 
   
 
-Interest 
+Scientific Interests
 ======
 * Data assimilation
-* Uncertainty quantification
+* Uncertainty quantification and propagation
 * Robust optimisation
 
 Skills
