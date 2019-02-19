@@ -23,7 +23,7 @@ PhD
 Title: Control of parameters in the presence of uncertainties
 Keywords: Robust estimation, optimisation, uncertainty quantification
 
-* GitLab repositoy dedicated to my PhD: [Click here (in French)](https://gitlab.inria.fr/vtrapple/These)
+* GitLab repository dedicated to my PhD: [Click here (in French)](https://gitlab.inria.fr/vtrapple/These)
 
 
 
