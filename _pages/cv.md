@@ -9,6 +9,10 @@ redirect_from:
 
 {% include base_path %}
 
+PDF Version (15/05/2019)
+======
+Get the pdf version of my academic cv by clicking [there](https://vtrappler.github.io/files/cv_vt.pdf)
+
 Education
 ======
 * General Engineering degree, École Centrale de Lyon, 2017
@@ -32,32 +36,32 @@ Scientific Interests
 * Uncertainty quantification and propagation
 * Robust optimisation
 
-Skills
-======
-* 
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+<!-- Skills -->
+<!-- ====== -->
+<!-- *  -->
+<!-- * Skill 2 -->
+<!--   * Sub-skill 2.1 -->
+<!--   * Sub-skill 2.2 -->
+<!--   * Sub-skill 2.3 -->
+<!-- * Skill 3 -->
 
-Publications
-======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+<!-- Publications -->
+<!-- ====== -->
+<!--   <ul>{% for post in site.publications %} -->
+<!--     {% include archive-single-cv.html %} -->
+<!--   {% endfor %}</ul> -->
   
-Talks
-======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
+<!-- Talks -->
+<!-- ====== -->
+<!--   <ul>{% for post in site.talks %} -->
+<!--     {% include archive-single-talk-cv.html %} -->
+<!--   {% endfor %}</ul> -->
   
-Teaching
-======
-  <ul>{% for post in site.teaching %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+<!-- Teaching -->
+<!-- ====== -->
+<!--   <ul>{% for post in site.teaching %} -->
+<!--     {% include archive-single-cv.html %} -->
+<!--   {% endfor %}</ul> -->
   
 Extracurricular activities
 ======
