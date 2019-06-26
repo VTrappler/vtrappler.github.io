@@ -15,35 +15,35 @@ Get the pdf version of my academic cv by clicking [there](https://vtrappler.gith
 
 Education
 ======
-* General Engineering degree, École Centrale de Lyon, 2017
-* MSc in Mathematical Modelling and Computation, Denmarks Tekniske Universitet (DTU), 2017
 * PhD in Applied Mathematics, Statistics and Probabilities, Université Grenoble Alpes, 2020 (expected)
+* MSc in Mathematical Modelling and Computation, Denmarks Tekniske Universitet (DTU), 2017
+* General Engineering degree, École Centrale de Lyon, 2017
+
+
 
 Work experience
 ======
-* January to July 2017: Master thesis: Parameter control in the presence of uncertainties
-  * Within Inria research team AIRSEA
+* **Master thesis** (January to July 2017): Parameter control in the presence of uncertainties
+  * Inria research team AIRSEA, LJK, Grenoble (France)
   * Develop tools of estimation in python and R
 
-* May to July 2015: Intern 
-  * EDF R&D department, LNHE, France
-  * Duties included: Develop MATLAB tools to better visualize and study numerical simulations performed with TELEMAC3D. Implement the computation of the flushing time of large body of waters 
+* **Intern** (May to July 2015): Development of MATLAB tools for TELEMAC3D. Flushing time application.
+  * EDF R&D department, LNHE, Chatou (France)
+  * Develop MATLAB tools to better visualize and study numerical simulations performed with TELEMAC3D. Implement the computation of the flushing time of large body of waters 
   
-
+ 
 Scientific Interests
 ======
 * Data assimilation
 * Uncertainty quantification and propagation
 * Robust optimisation
 
-<!-- Skills -->
-<!-- ====== -->
-<!-- *  -->
-<!-- * Skill 2 -->
-<!--   * Sub-skill 2.1 -->
-<!--   * Sub-skill 2.2 -->
-<!--   * Sub-skill 2.3 -->
-<!-- * Skill 3 -->
+Languages
+======
+* French (Mothertongue)
+* English (Fluent, TOEFL IBT score (2015): 105)
+* German
+* Danish (Beginner level)
 
 <!-- Publications -->
 <!-- ====== -->
