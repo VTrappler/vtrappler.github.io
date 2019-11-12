@@ -40,7 +40,7 @@ Strategies taking into account those uncertainties are to be defined and applied
 
 
 * **Relevant links**: 
-..* GitLab repository dedicated to my PhD: [Click here (in French)](https://gitlab.inria.fr/vtrapple/These)
+  - GitLab repository dedicated to my PhD: [Click here (in French)](https://gitlab.inria.fr/vtrapple/These)
 
 
 
