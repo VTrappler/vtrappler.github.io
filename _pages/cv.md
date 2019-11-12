@@ -64,5 +64,5 @@ Languages
 <!--   {% endfor %}</ul> -->
   
 Extracurricular activities
-======
+---
 * Basketball: player and occasionally coach.
