@@ -11,7 +11,7 @@ redirect_from:
 
 PDF Version (15/05/2019)
 ======
-Get the pdf version of my academic cv by clicking [there](https://vtrappler.github.io/files/cv_vt.pdf)
+Get the pdf version of my academic cv by [clicking here](https://vtrappler.github.io/files/cv_vt.pdf)
 
 Education
 ======
