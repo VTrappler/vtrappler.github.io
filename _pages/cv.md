@@ -10,11 +10,11 @@ redirect_from:
 {% include base_path %}
 
 PDF Version (15/05/2019)
-======
+---
 Get the pdf version of my academic cv by [clicking here](https://vtrappler.github.io/files/cv_vt.pdf)
 
 Education
-======
+---
 * PhD in Applied Mathematics, Statistics and Probabilities, Université Grenoble Alpes, 2020 (expected)
 * MSc in Mathematical Modelling and Computation, Denmarks Tekniske Universitet (DTU), 2017
 * General Engineering degree, École Centrale de Lyon, 2017
@@ -22,7 +22,7 @@ Education
 
 
 Work experience
-======
+---
 * **Master thesis** (January to July 2017): Parameter control in the presence of uncertainties
   * Inria research team AIRSEA, LJK, Grenoble (France)
   * Develop tools of estimation in python and R
@@ -33,13 +33,13 @@ Work experience
   
  
 Scientific Interests
-======
+---
 * Data assimilation
 * Uncertainty quantification and propagation
 * Robust optimisation
 
 Languages
-======
+---
 * French (Mothertongue)
 * English (Fluent, TOEFL IBT score (2015): 105)
 * German
