@@ -4,6 +4,7 @@ collection: teaching
 type: "Undergraduate course"
 permalink: /teaching/2018-MIASHS
 venue: "Université Grenoble-Alpes, DLST"
+date: 2018
 location: "Grenoble, France"
 ---
 
