@@ -8,13 +8,6 @@ date: 2018-01-01
 location: "Grenoble, France"
 ---
 
-
-### Course objectives
-Build a mathematical ground, and introduce notions of calculus for students in the cursus of Mathematics and Computer science applied to Social sciences and Economy
-
-### Tasks
-Help students, through exercises sessions, to acquire the required knowledges on calculus and scientific computations.
-### Total amount of hours
-
-20 hours during the spring semester of 2018
+### Description
+Build a mathematical ground, and introduce notions of calculus for students in their cursus of Mathematics and Computer science applied to Social sciences and Economy. My role was to help students, through exercises sessions, to acquire the required knowledges on calculus and scientific computations. This represented 20 hours during the spring semester of 2018.
 
