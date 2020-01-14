@@ -201,6 +201,17 @@ defaults:
       comments: true
       share: true
       related: true
+  # _outreach
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: true
+      related: false
   # _pages
   - scope:
       path: ""

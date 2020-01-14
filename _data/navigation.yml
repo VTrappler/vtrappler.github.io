@@ -14,12 +14,17 @@ main:
         
 #  - title: "Blog Posts"
 #    url: /year-archive/
+
     
   - title: "CV"
     url: /cv/
+
+  - title: "Outreach"
+    url: /outreach/
     
 #  - title: "Guide"
 #    url: /markdown/
 
-  - title: "Personal projects"
+  - title: "Miscellaneous"
     url: /personalprojects/
+
