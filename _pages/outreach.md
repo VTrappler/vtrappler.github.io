@@ -5,9 +5,18 @@ author_profile: true
 ---
 
 
-## Objective driven sequential design of experiments
+# Objective driven sequential design of experiments
+## Gaussian Processes as metamodels
+## One-step look ahead strategies
 
+### Optimisation
+#### Probability of improvement
 
-<img src="https://vtrappler.github.io/images/EI.gif" width="500" height="500" />
+#### Expected-Improvement (EI)
+<img src="https://vtrappler.github.io/images/EI.gif" width="700" height="700" />
+#### IAGO
 
-<img src="https://vtrappler.github.io/images/PEI.png" width="500" height="500" />
+### Profile Reconstruction
+<img src="https://vtrappler.github.io/images/PEI.png" width="700" height="700" />
+
+### Level-set Reconstruction
