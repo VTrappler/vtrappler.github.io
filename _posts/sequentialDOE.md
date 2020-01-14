@@ -1,7 +1,7 @@
 ---
 title: 'Sequential Design of experiments'
 date: 2020-01-14
-permalink: /posts/sequentialDOE
+permalink: /posts/2019/sequentialDOE
 tags:
   - GP
   - DOE
