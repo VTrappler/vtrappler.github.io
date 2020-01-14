@@ -1,10 +1,9 @@
 ---
 permalink: /outreach/
 title: "Outreach"
-excerpt: "Outreach"
 author_profile: true
 redirect_from: 
-  - /outreach/
+  - /outreach
   - /outreach.html
 ---
 
