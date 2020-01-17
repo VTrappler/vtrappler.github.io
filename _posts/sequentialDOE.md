@@ -16,10 +16,11 @@ Let us consider that we have a function \begin{equation} f: x \mapsto f(x) \end{
 #### Probability of improvement
 
 #### Expected-Improvement (EI)
-<img src="https://vtrappler.github.io/images/EI.gif" width="600" height="600" />
+<div style="text-align:center"><img src="https://vtrappler.github.io/images/EI.gif" width="600" height="600" /></div>
 #### IAGO
 
 ### Profile Reconstruction
-<img src="https://vtrappler.github.io/images/PEI.png" width="600" height="600" />
+<div style="text-align:center"><img src="https://vtrappler.github.io/images/PEI.png" width="600" height="600" /></div>
 
 ### Level-set Reconstruction
+TBC
