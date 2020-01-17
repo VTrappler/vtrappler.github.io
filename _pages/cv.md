@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-PDF Version (15/05/2019)
+PDF Version (17/01/2020)
 ---
 Get the pdf version of my academic cv by [clicking here](https://vtrappler.github.io/files/cv_vt.pdf)
 
@@ -51,17 +51,17 @@ Languages
 <!--     {% include archive-single-cv.html %} -->
 <!--   {% endfor %}</ul> -->
   
-<!-- Talks -->
-<!-- ====== -->
-<!--   <ul>{% for post in site.talks %} -->
-<!--     {% include archive-single-talk-cv.html %} -->
-<!--   {% endfor %}</ul> -->
+Talks
+---
+  <ul>{% for post in site.talks %}
+    {% include archive-single-talk-cv.html %}
+  {% endfor %}</ul>
   
-<!-- Teaching -->
-<!-- ====== -->
-<!--   <ul>{% for post in site.teaching %} -->
-<!--     {% include archive-single-cv.html %} -->
-<!--   {% endfor %}</ul> -->
+Teaching
+---
+  <ul>{% for post in site.teaching %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
   
 Extracurricular activities
 ---
