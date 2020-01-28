@@ -33,6 +33,7 @@ A good example of this type of problem is the estimation of bottom friction para
 Classical methods of parameter estimation usually imply the minimisation of an objective function, that measures the error between some observations and the results obtained by a numerical model. The optimum is directly dependent on the fixed nominal value given to the uncertain parameter ; and therefore may not be relevant in other conditions.
 Strategies taking into account those uncertainties are to be defined and applied on an academic model of a coastal area, in order to find an optimal value in a robust sense.
 
+![inverse problem](https://vtrappler.github.io/images/inv_prob.png "Graphical abstract")
 
 * **Keywords**: Robust estimation, optimisation, uncertainty quantification
 
