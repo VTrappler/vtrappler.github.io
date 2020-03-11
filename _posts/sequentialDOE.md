@@ -1,3 +1,4 @@
+
 ---
 title: 'Sequential Design of experiments'
 date: 2020-01-14
