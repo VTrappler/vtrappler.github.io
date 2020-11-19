@@ -2,11 +2,11 @@
 title: "Robust calibration of numerical models based on relative regret "
 collection: publications
 permalink: /publication/2020-02-03-robust-relative-regret
-excerpt: 'Robust calibration of numerical models based on relative regret'
+excerpt: 'This paper has been published in JCP, and introduces the family of relative-regret estimators'
 date: 2020-11-01
 venue: 'Journal of Computational Physics'
 paperurl: 'https://hal.archives-ouvertes.fr/hal-02464780'
-citation: 'Victor Trappler, Élise Arnaud, Arthur Vidard, Laurent Debreu. Robust calibration of numerical models based on relative regret. 2020
+citation: 'Victor Trappler, Élise Arnaud, Arthur Vidard, Laurent Debreu. Robust calibration of numerical models based on relative regret. 2020'
 ---
 # Robust calibration of numerical models based on relative regret
 The HAL link is [hal-02464780](https://hal.archives-ouvertes.fr/hal-02464780
