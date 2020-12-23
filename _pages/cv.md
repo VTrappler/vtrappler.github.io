@@ -9,13 +9,13 @@ redirect_from:
 
 {% include base_path %}
 
-PDF Version (17/01/2020)
+PDF Version (last update: 23/12/2020)
 ---
-Get the pdf version of my academic cv by [clicking here](https://vtrappler.github.io/files/cv_vt.pdf)
+[Get the pdf version of my academic cv by clicking here](https://vtrappler.github.io/files/academic_cv_TRAPPLER.pdf)
 
 Education
 ---
-* PhD in Applied Mathematics, Statistics and Probabilities, Université Grenoble Alpes, 2020 (expected)
+* PhD in Applied Mathematics, Statistics and Probabilities, Université Grenoble Alpes, 2021 (expected)
 * MSc in Mathematical Modelling and Computation, Denmarks Tekniske Universitet (DTU), 2017
 * General Engineering degree, École Centrale de Lyon, 2017
 
@@ -45,11 +45,11 @@ Languages
 * German
 * Danish (Beginner level)
 
-<!-- Publications -->
-<!-- ====== -->
-<!--   <ul>{% for post in site.publications %} -->
-<!--     {% include archive-single-cv.html %} -->
-<!--   {% endfor %}</ul> -->
+Publications
+---
+  <ul>{% for post in site.publications %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
   
 Talks and Posters
 ---
@@ -65,4 +65,5 @@ Teaching
   
 Extracurricular activities
 ---
+* Elected representative of non-permanent staff at the council of the Jean Kuntzmann Laboratory (LJK) for 2020
 * Basketball: player and occasionally coach.

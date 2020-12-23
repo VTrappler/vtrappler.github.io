@@ -8,7 +8,11 @@ redirect_from:
   - /about.html
 ---
 
-Welcome on my personal webpage.
+Welcome on my personal page, which will be used to share things about
+my work. I am still trying to learn the ropes of this setup.
+
+Also, I will try to write some posts about things I care about (mostly
+work-related), and share some small personal projects.
 
 Who am I ?
 ---
@@ -34,10 +38,23 @@ PhD (2017-2021)
 ---
 * **Title**: Control of parameters in the presence of uncertainties. Robust Estimation of bottom friction
 
-* **Abstract**: Many physical phenomena are modelled numerically in order to better understand and/or to predict their behaviour. However, some complex and small scale phenomena can not be fully represented in the models. The introduction of ad-hoc correcting terms is usually the solution to represent these unresolved processes, but those need to be properly estimated.
-A good example of this type of problem is the estimation of bottom friction parameters of the ocean floor. This task is further complicated by the presence of uncertainties in certain other characteristics linking the bottom and the surface (eg boundary conditions).
-Classical methods of parameter estimation usually imply the minimisation of an objective function, that measures the error between some observations and the results obtained by a numerical model. The optimum is directly dependent on the fixed nominal value given to the uncertain parameter ; and therefore may not be relevant in other conditions.
-Strategies taking into account those uncertainties are to be defined and applied on an academic model of a coastal area, in order to find an optimal value in a robust sense.
+* **Abstract**: Many physical phenomena are modelled numerically in
+order to better understand and/or to predict their behaviour. However,
+some complex and small scale phenomena can not be fully represented in
+the models. The introduction of ad-hoc correcting terms is usually the
+solution to represent these unresolved processes, but those need to be
+properly estimated.  A good example of this type of problem is the
+estimation of bottom friction parameters of the ocean floor. This task
+is further complicated by the presence of uncertainties in certain
+other characteristics linking the bottom and the surface (eg boundary
+conditions).  Classical methods of parameter estimation usually imply
+the minimisation of an objective function, that measures the error
+between some observations and the results obtained by a numerical
+model. The optimum is directly dependent on the fixed nominal value
+given to the uncertain parameter ; and therefore may not be relevant
+in other conditions.  Strategies taking into account those
+uncertainties are to be defined and applied on an academic model of a
+coastal area, in order to find an optimal value in a robust sense.
 
 ![inverse problem](https://vtrappler.github.io/images/inv_prob.png "Graphical abstract")
 
