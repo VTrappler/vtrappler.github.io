@@ -12,7 +12,7 @@ tags:
 ---
 #+END_EXPORT
 #+OPTIONS: toc:nil
-#+OPTIONS: unnumbered:1
+#+OPTIONS: num:nil
 
 
 * From org-mode to html
@@ -36,6 +36,9 @@ project, as adapted from [[https://thackl.github.io/blogging-with-emacs-org-mode
   #+end_src
 
 * Create a post using a elisp function
+  We are going to define a function, which creates the proper file,
+  with the proper formatting etc.
+  This will be called using the classic =M+x create-blogpost=.
   #+begin_src emacs-lisp
     (defun create-blogpost (x)
 	"Create a new blogpost."
@@ -96,7 +99,12 @@ The snippet is described in the next section
 We created in a separate file the following [[https://joaotavora.github.io/yasnippet/][snippet]] to generate
 properly the Jekyll frontmatter. As one can execute directly elisp
 code at the insertion of the snippet, we can exploit this property in
-order to get the correct format for the file.
+order to get the correct format for the file. To avoid passing
+arguments from the =create-blogpost=, we are going to simply retrieve
+all the info, by stripping the filename of the dashes, while the
+current date and the =.org= extension are removed in a hardcoded
+manner.
+
 #+begin_src emacs-lisp
 # -*- mode: snippet -*-
 # name: jekyll-frontmatter-create
@@ -112,4 +120,6 @@ permalink: /posts/`(shell-command-to-string "echo -n $(date +%Y/%m)")`/`(substri
 tags:
 ---
 #+END_EXPORT
+#+OPTIONS: toc:nil
+#+OPTIONS: unnumbered:1
 #+end_src
