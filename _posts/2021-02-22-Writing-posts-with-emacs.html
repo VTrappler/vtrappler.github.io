@@ -3,7 +3,8 @@
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#org7efe1ab">1. From org-mode to html</a></li>
-<li><a href="#org154e2a7">2. Using yassnippets for the frontmatter used in jekyll</a></li>
+<li><a href="#org0a74d5a">2. Create a post using a elisp function</a></li>
+<li><a href="#org154e2a7">3. Using yassnippets for the frontmatter used in jekyll</a></li>
 </ul>
 </div>
 </div>
@@ -12,17 +13,27 @@ layout: post
 title: Writing posts with emacs
 date: 2021-02-22
 permalink: /posts/2021/02/Writing-posts-with-emacs
+excerpt: Detail of the workflow for writing posts there using emacs
 tags:
+  - emacs
+  - org-mode
+  - jekyll
+  - post
 ---
+
+
+
 <div id="outline-container-org7efe1ab" class="outline-2">
 <h2 id="org7efe1ab"><span class="section-number-2">1</span> From org-mode to html</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-For that I used
+We are first going to set the parameters for the publishing of the
+project, as adapted from <a href="https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll">there</a>
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">setq</span> org-publish-project-alist <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll</span>
-      '((<span style="color: #2aa198;">"vtrappler.github.io"</span> <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">my blog )</span>
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">setq</span> org-publish-project-alist
+<span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll</span>
+      '((<span style="color: #2aa198;">"vtrappler.github.io"</span> <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">name of the page )</span>
          <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">Path to org files.</span>
          <span style="color: #d33682; font-style: italic;">:base-directory</span> <span style="color: #2aa198;">"~/vtrappler.github.io/org_posts/"</span>
          <span style="color: #d33682; font-style: italic;">:base-extension</span> <span style="color: #2aa198;">"org"</span>
@@ -39,9 +50,96 @@ For that I used
 </div>
 </div>
 
-<div id="outline-container-org154e2a7" class="outline-2">
-<h2 id="org154e2a7"><span class="section-number-2">2</span> Using yassnippets for the frontmatter used in jekyll</h2>
+<div id="outline-container-org0a74d5a" class="outline-2">
+<h2 id="org0a74d5a"><span class="section-number-2">2</span> Create a post using a elisp function</h2>
 <div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #b58900;">create-blogpost</span> (x)
+    <span style="color: #35a69c; font-style: italic;">"Create a new blogpost."</span>
+    (<span style="color: #859900; font-weight: bold;">interactive</span> <span style="color: #2aa198;">"sPost title: "</span>)
+    (<span style="color: #859900; font-weight: bold;">let</span> ((date (shell-command-to-string <span style="color: #2aa198;">"echo -n $(date +%Y-%m-%d)"</span>))
+          (title (s-replace <span style="color: #2aa198;">" "</span> <span style="color: #2aa198;">"-"</span> x))
+          filename filepath)
+      (<span style="color: #859900; font-weight: bold;">setf</span> filename (concat date <span style="color: #2aa198;">"-"</span> title <span style="color: #2aa198;">".org"</span>))
+      (<span style="color: #859900; font-weight: bold;">setf</span> filepath (concat <span style="color: #2aa198;">"~/vtrappler.github.io/org_posts/"</span> filename))
+      (write-region <span style="color: #2aa198;">""</span> 0 filepath t)
+      (find-file filepath))
+      (insert <span style="color: #2aa198;">"jekyll-autofilled-frontmatter"</span>) <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">use the yassnippet</span>
+      (yas-expand)
+      )
+</pre>
+</div>
+
+<p>
+Let us describe step by step how this function is created:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">interactive</span> <span style="color: #2aa198;">"sPost title:"</span>)
+</pre>
+</div>
+<p>
+This prompts an user input, in this case the title of the post we wish
+to create.  The seemingly missplaced <code>s</code> is not a typo, but a code
+letter indicating that the format of the input is a string. This
+defines <code>x</code>, as it is not stated when calling the function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">let</span> ((date (shell-command-to-string <span style="color: #2aa198;">"echo -n $(date +%Y-%m-%d)"</span>))
+              (title (s-replace <span style="color: #2aa198;">" "</span> <span style="color: #2aa198;">"-"</span> x))
+              filename filepath)
+</pre>
+</div>
+<p>
+The bash command <code>"echo -n $(date +%Y-%m-%d)"</code> here outputs the
+current date, in the format YYYY-MM-DD, and we assign the output
+string to the variable <code>date</code>.  Then we replace all the whitespaces in
+the title by dashes, and assign it to the variable <code>title</code>. Finally,
+the <code>filename</code> and <code>filepath</code> variables are declared. Their values are set next:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">setf</span> filename (concat date <span style="color: #2aa198;">"-"</span> title <span style="color: #2aa198;">".org"</span>))
+(<span style="color: #859900; font-weight: bold;">setf</span> filepath (concat <span style="color: #2aa198;">"~/vtrappler.github.io/org_posts/"</span> filename))
+</pre>
+</div>
+<p>
+The filename is then in the format <code>YYYY-MM-DD-title-with-dashes.org</code>,
+as recognized by Jekyll.
+</p>
+
+<p>
+The next two calls ensures that this file can and is created.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(write-region <span style="color: #2aa198;">""</span> 0 filepath t)
+(find-file filepath)) <span style="color: #96A7A9; font-style: italic;">;;</span><span style="color: #96A7A9; font-style: italic;">Closes the parenthesis of (let ...</span>
+</pre>
+</div>
+
+<p>
+The last calls inside the function insert the text necessary to
+incorporate the Jekyll frontmatter.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(insert <span style="color: #2aa198;">"jekyll-autofilled-frontmatter"</span>) <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">insert the key of the snippet</span>
+(yas-expand) 
+</pre>
+</div>
+<p>
+The snippet is described in the next section
+</p>
+</div>
+</div>
+
+<div id="outline-container-org154e2a7" class="outline-2">
+<h2 id="org154e2a7"><span class="section-number-2">3</span> Using yassnippets for the frontmatter used in jekyll</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+We created in a separate file the following <a href="https://joaotavora.github.io/yasnippet/">snippet</a> to generate
+properly the Jekyll frontmatter. As one can execute directly elisp
+code at the insertion of the snippet, we can exploit this property in
+order to get the correct format for the file.
+</p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"># -*- mode: snippet -*-
 # name: jekyll-frontmatter-create

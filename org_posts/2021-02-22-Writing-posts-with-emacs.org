@@ -4,14 +4,24 @@ layout: post
 title: Writing posts with emacs
 date: 2021-02-22
 permalink: /posts/2021/02/Writing-posts-with-emacs
+excerpt: Detail of the workflow for writing posts there using emacs
 tags:
+  - emacs
+  - org-mode
+  - jekyll
+  - post
 ---
 #+END_EXPORT
+
+
+
 * From org-mode to html
-  For that I used
+We are first going to set the parameters for the publishing of the
+project, as adapted from [[https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll][there]]
   #+begin_src emacs-lisp
-    (setq org-publish-project-alist ;; https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll
-	  '(("vtrappler.github.io" ;; my blog )
+    (setq org-publish-project-alist
+    ;; https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll
+	  '(("vtrappler.github.io" ;; name of the page )
 	     ;; Path to org files.
 	     :base-directory "~/vtrappler.github.io/org_posts/"
 	     :base-extension "org"
@@ -25,8 +35,68 @@ tags:
 	     )))
   #+end_src
 
-* Using yassnippets for the frontmatter used in jekyll
+* Create a post using a elisp function
+  #+begin_src emacs-lisp
+    (defun create-blogpost (x)
+	"Create a new blogpost."
+	(interactive "sPost title: ")
+	(let ((date (shell-command-to-string "echo -n $(date +%Y-%m-%d)"))
+	      (title (s-replace " " "-" x))
+	      filename filepath)
+	  (setf filename (concat date "-" title ".org"))
+	  (setf filepath (concat "~/vtrappler.github.io/org_posts/" filename))
+	  (write-region "" 0 filepath t)
+	  (find-file filepath))
+	  (insert "jekyll-autofilled-frontmatter") ;; use the yassnippet
+	  (yas-expand)
+	  )
+  #+end_src
 
+Let us describe step by step how this function is created:
+#+begin_src emacs-lisp
+(interactive "sPost title:")
+#+end_src
+This prompts an user input, in this case the title of the post we wish
+to create.  The seemingly missplaced =s= is not a typo, but a code
+letter indicating that the format of the input is a string. This
+defines =x=, as it is not stated when calling the function.
+
+#+begin_src emacs-lisp
+(let ((date (shell-command-to-string "echo -n $(date +%Y-%m-%d)"))
+	      (title (s-replace " " "-" x))
+	      filename filepath)
+#+end_src
+The bash command ="echo -n $(date +%Y-%m-%d)"= here outputs the
+current date, in the format YYYY-MM-DD, and we assign the output
+string to the variable =date=.  Then we replace all the whitespaces in
+the title by dashes, and assign it to the variable =title=. Finally,
+the =filename= and =filepath= variables are declared. Their values are set next:
+#+begin_src emacs-lisp
+(setf filename (concat date "-" title ".org"))
+(setf filepath (concat "~/vtrappler.github.io/org_posts/" filename))
+#+end_src
+The filename is then in the format =YYYY-MM-DD-title-with-dashes.org=,
+as recognized by Jekyll.
+
+The next two calls ensures that this file can and is created.
+#+begin_src emacs-lisp 
+(write-region "" 0 filepath t)
+(find-file filepath)) ;;Closes the parenthesis of (let ...
+#+end_src
+
+The last calls inside the function insert the text necessary to
+incorporate the Jekyll frontmatter.
+#+begin_src emacs-lisp
+(insert "jekyll-autofilled-frontmatter") ;; insert the key of the snippet
+(yas-expand) 
+#+end_src
+The snippet is described in the next section
+  
+* Using yassnippets for the frontmatter used in jekyll
+We created in a separate file the following [[https://joaotavora.github.io/yasnippet/][snippet]] to generate
+properly the Jekyll frontmatter. As one can execute directly elisp
+code at the insertion of the snippet, we can exploit this property in
+order to get the correct format for the file.
 #+begin_src emacs-lisp
 # -*- mode: snippet -*-
 # name: jekyll-frontmatter-create

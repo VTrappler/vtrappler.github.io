@@ -7,17 +7,13 @@
 </ul>
 </div>
 </div>
-<div class="org-src-container">
-<pre class="src src-html">---
+---
 layout: post
 title: Writing posts with emacs
 date: 2021-02-22
 permalink: /posts/2021/02/Writing-posts-with-emacs
 tags:
 ---
-</pre>
-</div>
-
 <div id="outline-container-org7efe1ab" class="outline-2">
 <h2 id="org7efe1ab"><span class="section-number-2">1</span> From org-mode to html</h2>
 <div class="outline-text-2" id="text-1">
@@ -52,7 +48,7 @@ For that I used
 # key: jekyll-autofilled-frontmatter
 # --
 
-#+BEGIN_SRC html
+#+BEGIN_EXPORT html
 ---
 layout: post
 title: `(s-replace <span style="color: #2aa198;">"-"</span> <span style="color: #2aa198;">" "</span> (substring (buffer-name) 11 -4))`
@@ -60,10 +56,8 @@ date: `(shell-command-to-string <span style="color: #2aa198;">"echo -n $(date +%
 permalink: /posts/`(shell-command-to-string <span style="color: #2aa198;">"echo -n $(date +%Y/%m)"</span>)`/`(substring (buffer-name) 11 -4)`
 tags:
 ---
+#+END_EXPORT
 </pre>
 </div>
-<p>
-#+end<sub>src</sub>
-</p>
 </div>
 </div>
