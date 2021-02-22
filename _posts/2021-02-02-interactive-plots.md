@@ -10,6 +10,6 @@ tags:
 
 # [Plotly](https://plotly.com/)
 
-# [Boskeh](https://bokeh.org/)
+# [Bokeh](https://bokeh.org/)
 
 https://p-mckenzie.github.io/2017/12/01/embedding-bokeh-with-github-pages/

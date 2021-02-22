@@ -1,0 +1,55 @@
+---
+layout: post
+title: Writing posts with emacs
+date: 2021-02-22
+permalink: /posts/2021/02/Writing-posts-with-emacs
+tags:
+---
+
+<div id="outline-container-org7efe1ab" class="outline-2">
+<h2 id="org7efe1ab"><span class="section-number-2">1</span> From org-mode to html</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+For that I used
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">setq</span> org-publish-project-alist <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll</span>
+      '((<span style="color: #2aa198;">"vtrappler.github.io"</span> <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">my blog )</span>
+         <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">Path to org files.</span>
+         <span style="color: #d33682; font-style: italic;">:base-directory</span> <span style="color: #2aa198;">"~/vtrappler.github.io/org_posts/"</span>
+         <span style="color: #d33682; font-style: italic;">:base-extension</span> <span style="color: #2aa198;">"org"</span>
+         <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">Path to Jekyll Posts</span>
+         <span style="color: #d33682; font-style: italic;">:publishing-directory</span> <span style="color: #2aa198;">"~/vtrappler.github.io/_posts/"</span>
+         <span style="color: #d33682; font-style: italic;">:recursive</span> t
+         <span style="color: #d33682; font-style: italic;">:publishing-function</span> org-html-publish-to-html
+         <span style="color: #d33682; font-style: italic;">:headline-levels</span> 4
+         <span style="color: #d33682; font-style: italic;">:html-extension</span> <span style="color: #2aa198;">"html"</span>
+         <span style="color: #d33682; font-style: italic;">:body-only</span> t
+         )))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org154e2a7" class="outline-2">
+<h2 id="org154e2a7"><span class="section-number-2">2</span> Using yassnippets for the frontmatter used in jekyll</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"># -*- mode: snippet -*-
+# name: jekyll-frontmatter-create
+# key: jekyll-autofilled-frontmatter
+# --
+
+#+BEGIN_EXPORT html
+---
+layout: post
+title: `(s-replace <span style="color: #2aa198;">"-"</span> <span style="color: #2aa198;">" "</span> (substring (buffer-name) 11 -4))`
+date: `(shell-command-to-string <span style="color: #2aa198;">"echo -n $(date +%Y-%m-%d)"</span>))<span style="color: #b58900;">`</span>
+permalink: /posts/`(shell-command-to-string <span style="color: #2aa198;">"echo -n $(date +%Y/%m)"</span>)`/`(substring (buffer-name) 11 -4)`
+tags:
+---
+#+END_EXPORT
+</pre>
+</div>
+</div>
+</div>
