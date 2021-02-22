@@ -29,11 +29,15 @@ own entertainment.
 <div id="outline-container-orgbc538b6" class="outline-2">
 <h2 id="orgbc538b6">Create the file using a elisp function</h2>
 <div class="outline-text-2" id="text-orgbc538b6">
+</div>
+<div id="outline-container-org83fafef" class="outline-3">
+<h3 id="org83fafef">Definition of the function</h3>
+<div class="outline-text-3" id="text-org83fafef">
 <p>
 We are going to define a function, which creates the proper file,
-with the proper formatting etc.
-This will be called using the classic <code>M+x create-blogpost</code>.
+with the proper formatting etc. This function is <a href="https://alessandrosthoughts.netlify.app/2019/03/09/how-to-create-a-blog-with-emacs/">taken from here</a>.
 </p>
+
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #b58900;">create-blogpost</span> (x)
     <span style="color: #35a69c; font-style: italic;">"Create a new blogpost."</span>
@@ -50,7 +54,15 @@ This will be called using the classic <code>M+x create-blogpost</code>.
       )
 </pre>
 </div>
+<p>
+This function will then be called using <code>M+x create-blogpost</code>.
+</p>
+</div>
+</div>
 
+<div id="outline-container-orgee1183d" class="outline-3">
+<h3 id="orgee1183d">Step by step description</h3>
+<div class="outline-text-3" id="text-orgee1183d">
 <p>
 Let us describe step by step how this function is created:
 </p>
@@ -109,6 +121,7 @@ incorporate the Jekyll frontmatter.
 <p>
 The snippet is described in the next section
 </p>
+</div>
 </div>
 </div>
 
