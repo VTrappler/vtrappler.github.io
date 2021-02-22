@@ -1,6 +1,5 @@
 #+BEGIN_EXPORT html
 ---
-layout: post
 title: Writing posts with emacs
 date: 2021-02-22
 permalink: /posts/2021/02/Writing-posts-with-emacs
