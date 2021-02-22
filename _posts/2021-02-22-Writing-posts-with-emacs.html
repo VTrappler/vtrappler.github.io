@@ -2,45 +2,33 @@
 title: Writing posts with emacs
 date: 2021-02-22
 permalink: /posts/2021/02/Writing-posts-with-emacs
-excerpt: Detail of the workflow for writing posts there using emacs
+excerpt: Detail of the process of writing posts on a Jekyll blog using Emacs
 tags:
   - emacs
   - org-mode
   - jekyll
   - post
 ---
-
-
-<div id="outline-container-org7efe1ab" class="outline-2">
-<h2 id="org7efe1ab">From org-mode to html</h2>
-<div class="outline-text-2" id="text-org7efe1ab">
 <p>
-We are first going to set the parameters for the publishing of the
-project, as adapted from <a href="https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll">there</a>
+I tried lately to get a bit more into emacs, by rewriting my
+configuration, and try to learn bits of emacs-lisp in the process.  It
+lead me to try to be able to maintain this website, and to create
+posts using org-mode, and automating the process the best I could.
+Indeed, I found the process of writing in markdown, whose syntax is
+close albeit different enough from the org-mode quite painful.
 </p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">setq</span> org-publish-project-alist
-<span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll</span>
-      '((<span style="color: #2aa198;">"vtrappler.github.io"</span> <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">name of the page )</span>
-         <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">Path to org files.</span>
-         <span style="color: #d33682; font-style: italic;">:base-directory</span> <span style="color: #2aa198;">"~/vtrappler.github.io/org_posts/"</span>
-         <span style="color: #d33682; font-style: italic;">:base-extension</span> <span style="color: #2aa198;">"org"</span>
-         <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">Path to Jekyll Posts</span>
-         <span style="color: #d33682; font-style: italic;">:publishing-directory</span> <span style="color: #2aa198;">"~/vtrappler.github.io/_posts/"</span>
-         <span style="color: #d33682; font-style: italic;">:recursive</span> t
-         <span style="color: #d33682; font-style: italic;">:publishing-function</span> org-html-publish-to-html
-         <span style="color: #d33682; font-style: italic;">:headline-levels</span> 4
-         <span style="color: #d33682; font-style: italic;">:html-extension</span> <span style="color: #2aa198;">"html"</span>
-         <span style="color: #d33682; font-style: italic;">:body-only</span> t
-         )))
-</pre>
-</div>
-</div>
-</div>
 
-<div id="outline-container-org0a74d5a" class="outline-2">
-<h2 id="org0a74d5a">Create a post using a elisp function</h2>
-<div class="outline-text-2" id="text-org0a74d5a">
+<p>
+For this, I use a combination of org-mode, yasnippet, all of this
+wrapped in a simple function. This is mainly stitching together
+various pieces I found here and there, and trying to understand the
+process. I am by no means an expert in anything and I do this for my
+own entertainment.
+</p>
+
+<div id="outline-container-orgbc538b6" class="outline-2">
+<h2 id="orgbc538b6">Create the file using a elisp function</h2>
+<div class="outline-text-2" id="text-orgbc538b6">
 <p>
 We are going to define a function, which creates the proper file,
 with the proper formatting etc.
@@ -157,5 +145,46 @@ tags:
 #+OPTIONS: unnumbered:1
 </pre>
 </div>
+</div>
+</div>
+<div id="outline-container-orgca4e061" class="outline-2">
+<h2 id="orgca4e061">Export org files to html</h2>
+<div class="outline-text-2" id="text-orgca4e061">
+<p>
+Finally, once the org file is written, we are going to export it to
+html: the parameters of publication are adapted from <a href="https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll">there</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">setq</span> org-publish-project-alist
+<span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll</span>
+      '((<span style="color: #2aa198;">"vtrappler.github.io"</span> <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">name of the page )</span>
+         <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">Path to org files.</span>
+         <span style="color: #d33682; font-style: italic;">:base-directory</span> <span style="color: #2aa198;">"~/vtrappler.github.io/org_posts/"</span>
+         <span style="color: #d33682; font-style: italic;">:base-extension</span> <span style="color: #2aa198;">"org"</span>
+         <span style="color: #96A7A9; font-style: italic;">;; </span><span style="color: #96A7A9; font-style: italic;">Path to Jekyll Posts</span>
+         <span style="color: #d33682; font-style: italic;">:publishing-directory</span> <span style="color: #2aa198;">"~/vtrappler.github.io/_posts/"</span>
+         <span style="color: #d33682; font-style: italic;">:recursive</span> t
+         <span style="color: #d33682; font-style: italic;">:publishing-function</span> org-html-publish-to-html
+         <span style="color: #d33682; font-style: italic;">:headline-levels</span> 4
+         <span style="color: #d33682; font-style: italic;">:html-extension</span> <span style="color: #2aa198;">"html"</span>
+         <span style="color: #d33682; font-style: italic;">:body-only</span> t
+         )))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f52bdc" class="outline-2">
+<h2 id="org4f52bdc">Final process</h2>
+<div class="outline-text-2" id="text-org4f52bdc">
+<p>
+The final process of writing a blog post is then
+</p>
+<ul class="org-ul">
+<li><code>M+x create-blogpost</code>, and type the title of the post when prompted</li>
+<li>Write the post</li>
+<li><code>C-c C-e P f</code>, publish to html</li>
+<li>Add, commit and push if applicable to update your website</li>
+</ul>
 </div>
 </div>

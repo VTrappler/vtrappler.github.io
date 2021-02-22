@@ -3,7 +3,7 @@
 title: Writing posts with emacs
 date: 2021-02-22
 permalink: /posts/2021/02/Writing-posts-with-emacs
-excerpt: Detail of the workflow for writing posts there using emacs
+excerpt: Detail of the process of writing posts on a Jekyll blog using Emacs
 tags:
   - emacs
   - org-mode
@@ -14,28 +14,20 @@ tags:
 #+OPTIONS: toc:nil
 #+OPTIONS: num:nil
 
+I tried lately to get a bit more into emacs, by rewriting my
+configuration, and try to learn bits of emacs-lisp in the process.  It
+lead me to try to be able to maintain this website, and to create
+posts using org-mode, and automating the process the best I could.
+Indeed, I found the process of writing in markdown, whose syntax is
+close albeit different enough from the org-mode quite painful.
 
-* From org-mode to html
-We are first going to set the parameters for the publishing of the
-project, as adapted from [[https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll][there]]
-  #+begin_src emacs-lisp
-    (setq org-publish-project-alist
-    ;; https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll
-	  '(("vtrappler.github.io" ;; name of the page )
-	     ;; Path to org files.
-	     :base-directory "~/vtrappler.github.io/org_posts/"
-	     :base-extension "org"
-	     ;; Path to Jekyll Posts
-	     :publishing-directory "~/vtrappler.github.io/_posts/"
-	     :recursive t
-	     :publishing-function org-html-publish-to-html
-	     :headline-levels 4
-	     :html-extension "html"
-	     :body-only t
-	     )))
-  #+end_src
+For this, I use a combination of org-mode, yasnippet, all of this
+wrapped in a simple function. This is mainly stitching together
+various pieces I found here and there, and trying to understand the
+process. I am by no means an expert in anything and I do this for my
+own entertainment.
 
-* Create a post using a elisp function
+* Create the file using a elisp function
   We are going to define a function, which creates the proper file,
   with the proper formatting etc.
   This will be called using the classic =M+x create-blogpost=.
@@ -123,3 +115,29 @@ tags:
 #+OPTIONS: toc:nil
 #+OPTIONS: unnumbered:1
 #+end_src
+* Export org files to html
+Finally, once the org file is written, we are going to export it to
+html: the parameters of publication are adapted from [[https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll][there]]
+  #+begin_src emacs-lisp
+    (setq org-publish-project-alist
+    ;; https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll
+	  '(("vtrappler.github.io" ;; name of the page )
+	     ;; Path to org files.
+	     :base-directory "~/vtrappler.github.io/org_posts/"
+	     :base-extension "org"
+	     ;; Path to Jekyll Posts
+	     :publishing-directory "~/vtrappler.github.io/_posts/"
+	     :recursive t
+	     :publishing-function org-html-publish-to-html
+	     :headline-levels 4
+	     :html-extension "html"
+	     :body-only t
+	     )))
+  #+end_src
+
+* Final process
+The final process of writing a blog post is then
++ =M+x create-blogpost=, and type the title of the post when prompted
++ Write the post
++ =C-c C-e P f=, publish to html
++ Add, commit and push if applicable to update your website

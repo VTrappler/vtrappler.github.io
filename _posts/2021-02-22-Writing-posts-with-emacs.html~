@@ -12,8 +12,8 @@ tags:
 
 
 <div id="outline-container-org7efe1ab" class="outline-2">
-<h2 id="org7efe1ab"><span class="section-number-2">1</span> From org-mode to html</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="org7efe1ab">From org-mode to html</h2>
+<div class="outline-text-2" id="text-org7efe1ab">
 <p>
 We are first going to set the parameters for the publishing of the
 project, as adapted from <a href="https://thackl.github.io/blogging-with-emacs-org-mode-and-jekyll">there</a>
@@ -39,8 +39,13 @@ project, as adapted from <a href="https://thackl.github.io/blogging-with-emacs-o
 </div>
 
 <div id="outline-container-org0a74d5a" class="outline-2">
-<h2 id="org0a74d5a"><span class="section-number-2">2</span> Create a post using a elisp function</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="org0a74d5a">Create a post using a elisp function</h2>
+<div class="outline-text-2" id="text-org0a74d5a">
+<p>
+We are going to define a function, which creates the proper file,
+with the proper formatting etc.
+This will be called using the classic <code>M+x create-blogpost</code>.
+</p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #b58900;">create-blogpost</span> (x)
     <span style="color: #35a69c; font-style: italic;">"Create a new blogpost."</span>
@@ -120,14 +125,19 @@ The snippet is described in the next section
 </div>
 
 <div id="outline-container-org154e2a7" class="outline-2">
-<h2 id="org154e2a7"><span class="section-number-2">3</span> Using yassnippets for the frontmatter used in jekyll</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="org154e2a7">Using yassnippets for the frontmatter used in jekyll</h2>
+<div class="outline-text-2" id="text-org154e2a7">
 <p>
 We created in a separate file the following <a href="https://joaotavora.github.io/yasnippet/">snippet</a> to generate
 properly the Jekyll frontmatter. As one can execute directly elisp
 code at the insertion of the snippet, we can exploit this property in
-order to get the correct format for the file.
+order to get the correct format for the file. To avoid passing
+arguments from the <code>create-blogpost</code>, we are going to simply retrieve
+all the info, by stripping the filename of the dashes, while the
+current date and the <code>.org</code> extension are removed in a hardcoded
+manner.
 </p>
+
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"># -*- mode: snippet -*-
 # name: jekyll-frontmatter-create
@@ -143,6 +153,8 @@ permalink: /posts/`(shell-command-to-string <span style="color: #2aa198;">"echo 
 tags:
 ---
 #+END_EXPORT
+#+OPTIONS: toc:nil
+#+OPTIONS: unnumbered:1
 </pre>
 </div>
 </div>
