@@ -11,7 +11,8 @@ tags:
   - post
 ---
 #+END_EXPORT
-
+#+OPTIONS: toc:nil
+#+OPTIONS: unnumbered:1
 
 
 * From org-mode to html
