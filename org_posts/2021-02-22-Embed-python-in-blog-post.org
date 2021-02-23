@@ -36,11 +36,11 @@ tags:
 
 #+RESULTS:
 [[file:../images/test_python.png]]
-
+*To be fixed*
  And make sure to toggle the display of inline images =C-c C-x C-v=.
  
 * Display a table
-
+Example of a table
 | x | y |
 |---+---|
 | 1 | a |
