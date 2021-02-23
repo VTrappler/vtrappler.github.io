@@ -47,7 +47,7 @@ own entertainment.
 	   (yas-expand)
 	   )
    #+end_src
-This function will then be called using =M+x create-blogpost=.
+This function will then be called using =M-x create-blogpost=.
 
 ** Step by step description
  Let us describe step by step how this function is created:
@@ -140,7 +140,8 @@ html: the parameters of publication are adapted from [[https://thackl.github.io/
 
 * Final process
 The final process of writing a blog post is then
-+ =M+x create-blogpost=, and type the title of the post when prompted
++ =M-x create-blogpost=, and type the title of the post when prompted
 + Write the post
 + =C-c C-e P f=, publish to html
 + Add, commit and push if applicable to update your website
+  

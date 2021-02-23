@@ -1,10 +1,13 @@
 #+BEGIN_EXPORT html
 ---
-layout: post
 title: Embed python in blog post
 date: 2021-02-22
 permalink: /posts/2021/02/Embed-python-in-blog-post
 tags:
+  - python
+  - org-mode
+  - emacs
+  - literate-programming
 ---
 #+END_EXPORT
 #+OPTIONS: toc:nil

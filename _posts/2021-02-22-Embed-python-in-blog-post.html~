@@ -1,12 +1,9 @@
 ---
+layout: post
 title: Embed python in blog post
 date: 2021-02-22
 permalink: /posts/2021/02/Embed-python-in-blog-post
 tags:
-  - python
-  - org-mode
-  - emacs
-  - literate-programming
 ---
 
 <div id="outline-container-org13f185b" class="outline-2">
@@ -35,80 +32,6 @@ plt.savefig(<span style="color: #2aa198;">'../images/test_python.png'</span>)
 
 <p>
 And make sure to toggle the display of inline images <code>C-c C-x C-v</code>.
-</p>
-</div>
-</div>
-<div id="outline-container-orgffdb8e0" class="outline-2">
-<h2 id="orgffdb8e0">Display a table</h2>
-<div class="outline-text-2" id="text-orgffdb8e0">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-right">x</td>
-<td class="org-left">y</td>
-</tr>
-
-<tr>
-<td class="org-right">1</td>
-<td class="org-left">y</td>
-</tr>
-
-<tr>
-<td class="org-right">2</td>
-<td class="org-left">b</td>
-</tr>
-
-<tr>
-<td class="org-right">3</td>
-<td class="org-left">c</td>
-</tr>
-
-<tr>
-<td class="org-right">4</td>
-<td class="org-left">d</td>
-</tr>
-</tbody>
-</table>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-<p>
-Dans une premiere Expérience numérique:
-durée de l'obs
-</p>
-
-<p>
-4.5 =&gt; canvas
-4.6 ccl =&gt; ça marche ou pas ?
 </p>
 </div>
 </div>
