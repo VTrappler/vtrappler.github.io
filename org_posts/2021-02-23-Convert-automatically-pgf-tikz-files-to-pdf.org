@@ -1,8 +1,9 @@
 #+BEGIN_EXPORT html
 ---
-title: Convert automatically pgf/tikz files to pdf/png
+title: Convert automatically pgf/tikz files to png
 date: 2021-02-23
 permalink: /posts/2021/02/Convert-automatically-pgf-tikz-files-to-pdf
+excerpt: Convert pgf graphics to png with a small script
 tags:
   - bash
   - python
@@ -24,11 +25,14 @@ place), I wrote this bash script in order to convert chosen figures in
 png, with enough dpi (Dots Per Inche). This create a =.tex= file, with
 only the figure. Once compiled, the output is converted using imagick
 and its =convert= command. Finally, we remove the auxiliary files
-created in the process. There probably exist better ways to do this.
+created in the process. There probably exists better ways to do this.
 
-Put this in =convert_pgf_to_png=
+Put this in a file named =convert_pgf_to_png= for instance:
 #+begin_src bash
 filename=${1%.pgf}
+#!/usr/bin/bash
+
+# Create the .tex file
 echo $filename
 echo "\documentclass[preview,border=4mm]{standalone}
 \usepackage[utf8]{inputenc}
@@ -42,15 +46,18 @@ echo "\documentclass[preview,border=4mm]{standalone}
 echo "\input{"$1"}" >> tmp.tex
 echo "\end{document}" >> tmp.tex
 
+# Compile the .tex
 pdflatex tmp.tex > cvert.log
 
+# Convert using imagick
 convert -density 500 -units pixelsperinch tmp.pdf $filename.png
+# Do some housekeeping
 rm -f tmp.tex tmp.aux tmp.pdf tmp.log tmp.fls tmp.fdb_latexmk tmp.ps tmp.dvi
 #+end_src
 
-=chmod +x convert_pgf_to_png= to be able to execute it, and you can then
+Use =chmod +x convert_pgf_to_png= to be able to execute it, and you can then call it
 #+begin_src bash
-  convert_pgf_to_png filename
+  ./convert_pgf_to_png filename
 #+end_src
-
+where =filename= is the name of the pgf figure you want to convert (without the extension).
 This is based on a stackoverflow answer I found somewhere.
