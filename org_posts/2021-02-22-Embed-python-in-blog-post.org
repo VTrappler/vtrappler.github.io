@@ -1,0 +1,27 @@
+#+BEGIN_EXPORT html
+---
+layout: post
+title: Embed python in blog post
+date: 2021-02-22
+permalink: /posts/2021/02/Embed-python-in-blog-post
+tags:
+---
+#+END_EXPORT
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+
+
+#+begin_src python :results file
+  import numpy as np
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+
+  x = np.arange(10)
+  y = x + np.random.normal(size=10)
+  plt.plot(x, y)
+  plt.savefig('../images/test_python.png')
+  return '../images/test_python.png' 
+#+end_src
+ And make sure to toggle the display of inline images =C-c C-x C-v=.
+#+RESULTS:
+[[file:../images/test_python.png]]
