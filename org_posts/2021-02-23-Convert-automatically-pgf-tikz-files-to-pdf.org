@@ -29,8 +29,9 @@ created in the process. There probably exists better ways to do this.
 
 Put this in a file named =convert_pgf_to_png= for instance:
 #+begin_src bash
-filename=${1%.pgf}
 #!/usr/bin/bash
+
+filename=${1%.pgf}
 
 # Create the .tex file
 echo $filename

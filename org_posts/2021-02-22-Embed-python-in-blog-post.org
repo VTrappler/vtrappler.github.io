@@ -1,4 +1,4 @@
-d#+BEGIN_EXPORT html
+#+BEGIN_EXPORT html
 ---
 title: Embed python in blog post
 date: 2021-02-22

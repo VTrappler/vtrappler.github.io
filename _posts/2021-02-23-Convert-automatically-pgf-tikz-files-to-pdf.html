@@ -28,8 +28,9 @@ created in the process. There probably exists better ways to do this.
 Put this in a file named <code>convert_pgf_to_png</code> for instance:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #268bd2;">filename</span>=${<span style="color: #268bd2;">1</span>%.pgf}
-<span style="color: #96A7A9; font-style: italic;">#</span><span style="color: #96A7A9; font-style: italic;">!/usr/bin/bash</span>
+<pre class="src src-bash"><span style="color: #96A7A9; font-style: italic;">#</span><span style="color: #96A7A9; font-style: italic;">!/usr/bin/</span><span style="color: #859900; font-weight: bold;">bash</span>
+
+<span style="color: #268bd2;">filename</span>=${<span style="color: #268bd2;">1</span>%.pgf}
 
 <span style="color: #96A7A9; font-style: italic;"># </span><span style="color: #96A7A9; font-style: italic;">Create the .tex file</span>
 <span style="color: #d33682; font-style: italic;">echo</span> $<span style="color: #268bd2;">filename</span>
