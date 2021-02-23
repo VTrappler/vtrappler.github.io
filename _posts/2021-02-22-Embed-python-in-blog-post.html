@@ -1,0 +1,37 @@
+---
+layout: post
+title: Embed python in blog post
+date: 2021-02-22
+permalink: /posts/2021/02/Embed-python-in-blog-post
+tags:
+---
+
+<div id="outline-container-org13f185b" class="outline-2">
+<h2 id="org13f185b">Example of an inline figure</h2>
+<div class="outline-text-2" id="text-org13f185b">
+<p>
+We model
+</p>
+\begin{align}
+ x_i &= i & 0 \leq i \leq 9\\
+ y_i &= x_i + \epsilon_i, & \epsilon_i \sim \mathcal{N}(0, i)
+\end{align}
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">import</span> numpy <span style="color: #859900; font-weight: bold;">as</span> np
+<span style="color: #859900; font-weight: bold;">import</span> matplotlib.pyplot <span style="color: #859900; font-weight: bold;">as</span> plt
+<span style="color: #859900; font-weight: bold;">import</span> seaborn <span style="color: #859900; font-weight: bold;">as</span> sns
+
+<span style="color: #268bd2;">x</span> = np.arange(10)
+<span style="color: #268bd2;">y</span> = x + np.random.normal(size=10) * np.sqrt(x)
+plt.plot(x, y, <span style="color: #2aa198;">'.'</span>)
+plt.plot(x, x, <span style="color: #2aa198;">'-'</span>)
+plt.savefig(<span style="color: #2aa198;">'../images/test_python.png'</span>)
+<span style="color: #859900; font-weight: bold;">return</span> <span style="color: #2aa198;">'../images/test_python.png'</span> 
+</pre>
+</div>
+
+<p>
+And make sure to toggle the display of inline images <code>C-c C-x C-v</code>.
+</p>
+</div>
+</div>

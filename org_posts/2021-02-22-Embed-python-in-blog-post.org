@@ -10,18 +10,46 @@ tags:
 #+OPTIONS: toc:nil
 #+OPTIONS: num:nil
 
+* Example of an inline figure
 
+  We model
+  \begin{align}
+   x_i &= i & 0 \leq i \leq 9\\
+   y_i &= x_i + \epsilon_i, & \epsilon_i \sim \mathcal{N}(0, i)
+  \end{align}
 #+begin_src python :results file
   import numpy as np
   import matplotlib.pyplot as plt
   import seaborn as sns
 
   x = np.arange(10)
-  y = x + np.random.normal(size=10)
-  plt.plot(x, y)
+  y = x + np.random.normal(size=10) * np.sqrt(x)
+  plt.plot(x, y, '.')
+  plt.plot(x, x, '-')
   plt.savefig('../images/test_python.png')
   return '../images/test_python.png' 
 #+end_src
- And make sure to toggle the display of inline images =C-c C-x C-v=.
+
 #+RESULTS:
 [[file:../images/test_python.png]]
+
+ And make sure to toggle the display of inline images =C-c C-x C-v=.
+* Display a table
+
+  | x | y |
+  | 1 | y |
+  | 2 | b |
+  | 3 | c |
+  | 4 | d |
+
+|   |   |
+|   |   |
+
+
+
+
+Dans une premiere Expérience numérique:
+durée de l'obs
+
+4.5 => canvas
+4.6 ccl => ça marche ou pas ?

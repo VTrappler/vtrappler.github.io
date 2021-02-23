@@ -1,0 +1,21 @@
+#+BEGIN_EXPORT html
+---
+layout: post
+title: Interactive plots
+date: 2021-02-23
+permalink: /posts/2021/02/Interactive-plots
+excerpt: How to integrate interactive plots on various supports (in progress)
+tags:
+  - python
+  - org-mode
+---
+#+END_EXPORT
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+
+* To be written
+[[https://bokeh.org/][Bokeh]]
+
+[[https://plotly.com/][Plotly]]
+
+https://p-mckenzie.github.io/2017/12/01/embedding-bokeh-with-github-pages/
