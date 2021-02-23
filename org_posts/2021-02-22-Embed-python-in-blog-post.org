@@ -1,4 +1,4 @@
-#+BEGIN_EXPORT html
+d#+BEGIN_EXPORT html
 ---
 title: Embed python in blog post
 date: 2021-02-22
@@ -38,22 +38,15 @@ tags:
 [[file:../images/test_python.png]]
 
  And make sure to toggle the display of inline images =C-c C-x C-v=.
+ 
 * Display a table
 
-  | x | y |
-  | 1 | y |
-  | 2 | b |
-  | 3 | c |
-  | 4 | d |
-
-|   |   |
-|   |   |
+| x | y |
+|---+---|
+| 1 | a |
+| 2 | b |
+| 3 | c |
 
 
 
 
-Dans une premiere Expérience numérique:
-durée de l'obs
-
-4.5 => canvas
-4.6 ccl => ça marche ou pas ?

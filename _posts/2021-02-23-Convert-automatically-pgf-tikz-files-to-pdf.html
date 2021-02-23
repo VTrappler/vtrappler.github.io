@@ -1,0 +1,61 @@
+---
+title: Convert automatically pgf/tikz files to pdf/png
+date: 2021-02-23
+permalink: /posts/2021/02/Convert-automatically-pgf-tikz-files-to-pdf
+tags:
+  - bash
+  - python
+  - latex
+---
+<p>
+When writing my dissertation, I tried to generate my figures in the
+most coherent way possible. I used a matplotlib stylesheet, and
+exported all my figures to pgf (TikZ is built on top of pgf, as LaTeX
+is built on top of TeX). For simple figures, everything was fine:
+vectorized figures, nice integration with LaTeX. However, for more
+complicated figures, such as contourf or geographical maps, the pgf
+files became very large (more than 5Mb). Instead of regenerating those
+files from the code (which maybe I should have done in the first
+place), I wrote this bash script in order to convert chosen figures in
+png, with enough dpi (Dots Per Inche). This create a <code>.tex</code> file, with
+only the figure. Once compiled, the output is converted using imagick
+and its <code>convert</code> command. Finally, we remove the auxiliary files
+created in the process. There probably exist better ways to do this.
+</p>
+
+<p>
+Put this in <code>convert_pgf_to_png</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #268bd2;">filename</span>=${<span style="color: #268bd2;">1</span>%.pgf}
+<span style="color: #d33682; font-style: italic;">echo</span> $<span style="color: #268bd2;">filename</span>
+<span style="color: #d33682; font-style: italic;">echo</span> <span style="color: #2aa198;">"\documentclass[preview,border=4mm]{standalone}</span>
+<span style="color: #2aa198;">\usepackage[utf8]{inputenc}</span>
+<span style="color: #2aa198;">\usepackage[T1]{fontenc}</span>
+<span style="color: #2aa198;">\usepackage{amsmath}</span>
+<span style="color: #2aa198;">\usepackage{url}</span>
+<span style="color: #2aa198;">\usepackage{tikz}</span>
+<span style="color: #2aa198;">\usepackage{color}</span>
+<span style="color: #2aa198;">\usepackage{xcolor}</span>
+<span style="color: #2aa198;">\begin{document}"</span> &gt; tmp.tex
+<span style="color: #d33682; font-style: italic;">echo</span> <span style="color: #2aa198;">"\input{"</span>$<span style="color: #268bd2;">1</span><span style="color: #2aa198;">"}"</span> &gt;&gt; tmp.tex
+<span style="color: #d33682; font-style: italic;">echo</span> <span style="color: #2aa198;">"\end{document}"</span> &gt;&gt; tmp.tex
+
+pdflatex tmp.tex &gt; cvert.log
+
+convert -density 500 -units pixelsperinch tmp.pdf $<span style="color: #268bd2;">filename</span>.png
+rm -f tmp.tex tmp.aux tmp.pdf tmp.log tmp.fls tmp.fdb_latexmk tmp.ps tmp.dvi
+</pre>
+</div>
+
+<p>
+<code>chmod +x convert_pgf_to_png</code> to be able to execute it, and you can then
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">convert_pgf_to_png filename
+</pre>
+</div>
+
+<p>
+This is based on a stackoverflow answer I found somewhere.
+</p>
