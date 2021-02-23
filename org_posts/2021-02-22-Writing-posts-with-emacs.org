@@ -108,7 +108,6 @@ manner.
 
 #+BEGIN_EXPORT html
 ---
-layout: post
 title: `(s-replace "-" " " (substring (buffer-name) 11 -4))`
 date: `(shell-command-to-string "echo -n $(date +%Y-%m-%d)"))`
 permalink: /posts/`(shell-command-to-string "echo -n $(date +%Y/%m)")`/`(substring (buffer-name) 11 -4)`
@@ -116,7 +115,7 @@ tags:
 ---
 #+END_EXPORT
 #+OPTIONS: toc:nil
-#+OPTIONS: unnumbered:1
+#+OPTIONS: num:nil
 #+end_src
 * Export org files to html
 Finally, once the org file is written, we are going to export it to

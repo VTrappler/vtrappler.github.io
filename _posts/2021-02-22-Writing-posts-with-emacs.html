@@ -147,7 +147,6 @@ manner.
 
 #+BEGIN_EXPORT html
 ---
-layout: post
 title: `(s-replace <span style="color: #2aa198;">"-"</span> <span style="color: #2aa198;">" "</span> (substring (buffer-name) 11 -4))`
 date: `(shell-command-to-string <span style="color: #2aa198;">"echo -n $(date +%Y-%m-%d)"</span>))<span style="color: #b58900;">`</span>
 permalink: /posts/`(shell-command-to-string <span style="color: #2aa198;">"echo -n $(date +%Y/%m)"</span>)`/`(substring (buffer-name) 11 -4)`
@@ -155,7 +154,7 @@ tags:
 ---
 #+END_EXPORT
 #+OPTIONS: toc:nil
-#+OPTIONS: unnumbered:1
+#+OPTIONS: num:nil
 </pre>
 </div>
 </div>

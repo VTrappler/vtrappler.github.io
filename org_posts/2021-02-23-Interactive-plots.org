@@ -1,6 +1,5 @@
 #+BEGIN_EXPORT html
 ---
-layout: post
 title: Interactive plots
 date: 2021-02-23
 permalink: /posts/2021/02/Interactive-plots

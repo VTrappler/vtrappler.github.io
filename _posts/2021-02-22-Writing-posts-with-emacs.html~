@@ -55,7 +55,7 @@ with the proper formatting etc. This function is <a href="https://alessandrostho
 </pre>
 </div>
 <p>
-This function will then be called using <code>M+x create-blogpost</code>.
+This function will then be called using <code>M-x create-blogpost</code>.
 </p>
 </div>
 </div>
@@ -194,7 +194,7 @@ html: the parameters of publication are adapted from <a href="https://thackl.git
 The final process of writing a blog post is then
 </p>
 <ul class="org-ul">
-<li><code>M+x create-blogpost</code>, and type the title of the post when prompted</li>
+<li><code>M-x create-blogpost</code>, and type the title of the post when prompted</li>
 <li>Write the post</li>
 <li><code>C-c C-e P f</code>, publish to html</li>
 <li>Add, commit and push if applicable to update your website</li>
