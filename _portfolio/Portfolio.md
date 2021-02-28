@@ -47,8 +47,14 @@ This definition highlights two different objectives, often linked:
     
 In that sense, I judge important the fact that the course material could should aim at developing core competences, and intuition as well. 
 
-## My own experience as a student
-One particular fact about my own experience, is that before enrolling as a PhD student at the UGA, I have never been part of the classical french university. After my Baccalauréat, I spent two years in CPGE, then two years in an "École d'Ingénieurs". Afterward, to complete my engineering degree, I enrolled for a double-degree at DTU (Danmarks Tekniske Universitet) in Denmark. Those three different establishments carried three different teaching methods
+## My own experience as a student One particular fact about my own
+experience, is that before enrolling as a PhD student at the UGA, I
+have never been part of the classical french university. After my
+Baccalauréat, I spent two years in CPGE, then two years in an "École
+d'Ingénieurs". Afterward, to complete my engineering degree, I
+enrolled for a double-degree at DTU (Danmarks Tekniske Universitet) in
+Denmark. Those three different establishments carried three different
+teaching methods
 
 
 ## Different teaching methods

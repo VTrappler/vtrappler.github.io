@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Presentation Template</title>
+<meta name="author" content="(Trappler Victor)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Presentation Template</h1><h2 class="author">Trappler Victor</h2><p class="date">Created: 2021-02-28 dim. 18:06</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org7ff9fc8">1. Introduction</a></li>
+<li><a href="#/slide-orgc09846b">2. Deterministical calibration</a></li>
+<li><a href="#/slide-org5205f30">3. Calibration under uncertainty</a></li>
+<li><a href="#/slide-org8b81e46">4. Regret-based estimates</a></li>
+<li><a href="#/slide-org7d5c581">5. SUR methods using GP</a></li>
+<li><a href="#/slide-org14dc88d">6. Conclusion</a></li>
+</ul>
+</div>
+</div>
+</section>
+<p>
+\(
+\DeclareMathOperator*{\argmin}{arg\,min}
+\)
+</p>
+
+<section>
+<section id="slide-org7ff9fc8">
+<h2 id="org7ff9fc8"><span class="section-number-2">1</span> Introduction</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc09846b">
+<h2 id="orgc09846b"><span class="section-number-2">2</span> Deterministical calibration</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+</section>
+<section id="slide-orgee3420a">
+<h3 id="orgee3420a"><span class="section-number-3">2.1</span> Numerical models</h3>
+<p>
+Numerical models are used 
+\(\mathcal{M}(x)\)
+</p>
+</section>
+<section id="slide-orgacc58e4">
+<h3 id="orgacc58e4"><span class="section-number-3">2.2</span> Inverse Problems</h3>
+<p>
+Given some observations \(y\), how to find \(\theta\) such that "\(y =
+   \mathcal{M}(x)\)", or at least as close as possible ?
+</p>
+</section>
+<section id="slide-orgfed2bec">
+<h3 id="orgfed2bec"><span class="section-number-3">2.3</span> Deterministic Calibration of numerical models</h3>
+<p>
+   Let us define \(J(x) = \| \mathcal{M}(x) - y\|^2_{\Sigma}\)
+and
+</p>
+<div>
+\begin{equation}
+\hat{x} = \min_{x \in \mathbb{X}} J(x)
+\end{equation}
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org5205f30">
+<h2 id="org5205f30"><span class="section-number-2">3</span> Calibration under uncertainty</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+</section>
+<section id="slide-org58178d9">
+<h3 id="org58178d9"><span class="section-number-3">3.1</span> Different types of uncertainties</h3>
+<p>
+A distinction can be made for the uncertainties:
+</p>
+<ul>
+<li>Epistemic: That can be reduced with more studies, more explorations</li>
+<li>Aleatoric: intrinsic variability</li>
+
+</ul>
+</section>
+<section id="slide-orgab2b535">
+<h3 id="orgab2b535"><span class="section-number-3">3.2</span> Introducing the aleatoric uncertainty</h3>
+<p>
+Input variable becomes  \(x := (\theta, U)\) with
+</p>
+<ul>
+<li>Epistemic: real parameter \(\theta\)</li>
+<li>Aleatoric: real random variable \(U\)</li>
+
+</ul>
+<p>
+and
+</p>
+<div>
+\begin{equation}
+J(\theta, U) = \| \mathcal{M}(\theta, U) - y\|^2_{\Sigma}
+\end{equation}
+
+</div>
+<p>
+is now a random variable as well, that we want to minimise in some sense
+</p>
+
+</section>
+<section id="slide-orgccc6ba5">
+<h3 id="orgccc6ba5"><span class="section-number-3">3.3</span> Many criteria of optimisation</h3>
+<p>
+Minimisation of the mean:
+</p>
+<div>
+\begin{equation}
+\hat{\theta}_{\mathrm{mean}} = \argmin_{\theta\in\Theta} \mathbb{E}_{U}\left[J(\theta, U)\right]
+\end{equation}
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org8b81e46">
+<h2 id="org8b81e46"><span class="section-number-2">4</span> Regret-based estimates</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+</section>
+<section id="slide-orgeb700c2">
+<h3 id="orgeb700c2"><span class="section-number-3">4.1</span> Conditional minimisers</h3>
+<p>
+Each sample \(u \sim U\) introduce a new situation of calibration, we introduce then
+</p>
+<div>
+\begin{align}
+\theta^*(u)
+\end{align}
+
+</div>
+</section>
+<section id="slide-orgde87b80">
+<h3 id="orgde87b80"><span class="section-number-3">4.2</span> Region of acceptability</h3>
+<p>
+\((\theta, u) \quad \alpha-\text{acceptable } \iff J(\theta, u) \leq \alpha J^*(u)\)
+</p>
+<style>
+  .p_iframe iframe {
+    width:60%;
+    height:500px;
+}
+</style>
+<div class="p_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="_data/first_figure_plotly.html"></iframe>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7d5c581">
+<h2 id="org7d5c581"><span class="section-number-2">5</span> SUR methods using GP</h2>
+<div>
+  \begin{equation}
+Z(\theta, u) \sim \mathcal{N}(m_Z(\theta,u), \sigma^2_Z(\theta, u)
+  \end{equation}
+
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org14dc88d">
+<h2 id="org14dc88d"><span class="section-number-2">6</span> Conclusion</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+theme: 'solarized', transition: 'none',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+
+
+</script>
+</body>
+</html>
