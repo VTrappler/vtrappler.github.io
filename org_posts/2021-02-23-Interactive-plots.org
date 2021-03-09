@@ -12,9 +12,16 @@ tags:
 #+OPTIONS: toc:nil
 #+OPTIONS: num:nil
 
-* To be written
-[[https://bokeh.org/][Bokeh]]
+# Interactive plots, when integrated in other supports are static (the
+# computation are not performed by the server nor the client)
 
-[[https://plotly.com/][Plotly]]
+* Not Matplotlib ?
+** Bokeh
+   [[https://bokeh.org/][Bokeh]]
 
-https://p-mckenzie.github.io/2017/12/01/embedding-bokeh-with-github-pages/
+** Plotly
+   [[https://plotly.com/][Plotly]] and export to html. Example of integration in a =reveal.js= presentation:
+ [[https://vtrappler.github.io/files/test.html][A test presentation]]
+
+** Inspired by 
+   https://p-mckenzie.github.io/2017/12/01/embedding-bokeh-with-github-pages/
