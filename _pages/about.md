@@ -16,8 +16,12 @@ work-related), and share some small personal projects.
 
 Who am I ?
 ---
-I'm currently a PhD student at the Université Grenoble Alpes (Grenoble, France), in the Inria research team named [AIRSEA](https://team.inria.fr/airsea/en/). 
-I expect to defend my thesis in March 2021.
+I'm a PhD student at the Université Grenoble
+Alpes (Grenoble, France), in the Inria research team named
+[AIRSEA](https://team.inria.fr/airsea/en/). I will defend my PhD on
+the 11th of June 2021.
+
+I'm currently looking for a postdoc position, either in France of abroad.
 
 My research interests are (but not limited to)
 * Optimisation Under Uncertainties
@@ -29,6 +33,7 @@ My research interests are (but not limited to)
 
 Relevant links
 ---
+* [PhD Dissertation](https://vtrappler.github.io/files/trappler_dissertation.pdf)
 * [Academic Resume](https://vtrappler.github.io/files/academic_cv_TRAPPLER.pdf)
 * [Publications](/publications/)
 * [GitLab repository dedicated to my PhD (in French)](https://gitlab.inria.fr/vtrapple/These)
@@ -36,7 +41,7 @@ Relevant links
 
 PhD (2017-2021)
 ---
-* **Title**: Control of parameters in the presence of uncertainties. Robust Estimation of bottom friction
+* **Title**: Control of parameters in the presence of uncertainties
 
 * **Abstract**: Many physical phenomena are modelled numerically in
 order to better understand and/or to predict their behaviour. However,
