@@ -33,7 +33,7 @@ My research interests are (but not limited to)
 
 Relevant links
 ---
-* [PhD Dissertation (Defense scheduled on Friday 11th June 20201)](https://vtrappler.github.io/files/trappler_dissertation.pdf)
+* [PhD Dissertation (Defense scheduled on Friday 11th June 2021)](https://vtrappler.github.io/files/trappler_dissertation.pdf)
 * [Academic Resume](https://vtrappler.github.io/files/academic_cv_TRAPPLER.pdf)
 * [Publications](/publications/)
 * [GitLab repository dedicated to my PhD (in French)](https://gitlab.inria.fr/vtrapple/These)
