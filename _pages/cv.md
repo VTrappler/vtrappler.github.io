@@ -15,9 +15,16 @@ PDF Version (last update: 23/12/2020)
 
 Education
 ---
-* PhD in Applied Mathematics, Statistics and Probabilities, Université Grenoble Alpes, 2021 (expected)
+* PhD in Applied Mathematics, Statistics and Probabilities, Université Grenoble Alpes, 2021
+  * [Parameter Control in the presence of uncertainties](https://vtrappler.github.io/files/trappler_dissertation.pdf)
 * MSc in Mathematical Modelling and Computation, Denmarks Tekniske Universitet (DTU), 2017
+  * Applied Mathematical Analysis
+  * Stochastic Dynamical Modelling
 * General Engineering degree, École Centrale de Lyon, 2017
+  * Statistics and econometry
+  * Probability theory
+  * Mathematics applied to biology (dynamical systems)
+  * Functional analysis
 
 
 
@@ -38,12 +45,23 @@ Scientific Interests
 * Uncertainty quantification and propagation
 * Robust optimisation
 
+Computer skills
+---
+* Python
+* R
+* LaTeX
+* git
+* bash
+* FORTRAN
+* elisp (beginner)
+
+
 Languages
 ---
-* French (Mothertongue)
-* English (Fluent, TOEFL IBT score (2015): 105)
-* German
-* Danish (Beginner level)
+* French: Mothertongue
+* English: Fluent (TOEFL IBT 105 in 2015, PhD Dissertation and defense in english)
+* German: Intermediate
+
 
 Publications
 ---

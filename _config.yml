@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Victor Trappler"
 title_separator          : "-"
 name                     : &name "Victor Trappler"
-description              : &description "PhD candidate in applied mathematics"
+description              : &description "PhD in applied mathematics"
 url                      : https://vtrappler.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "vtrappler.github.io"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Victor Trappler"
   avatar           : "profile.jpg"
-  bio              : "PhD candidate in applied mathematics"
+  bio              : "PhD in applied mathematics"
   location         : "Grenoble"
   employer         :  AIRSEA (Inria) / UGA
   googlescholar    :
