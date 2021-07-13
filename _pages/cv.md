@@ -17,10 +17,10 @@ Education
 ---
 * **PhD** in Applied Mathematics, Statistics and Probabilities, Université Grenoble Alpes, 2021
   * [Parameter Control in the presence of uncertainties](https://vtrappler.github.io/files/trappler_dissertation.pdf)
-* MSc in Mathematical Modelling and Computation, Denmarks Tekniske Universitet (DTU), 2017
+* **MSc** in Mathematical Modelling and Computation, Denmarks Tekniske Universitet (DTU), 2017
   * Applied Mathematical Analysis
   * Stochastic Dynamical Modelling
-* General Engineering degree, École Centrale de Lyon, 2017
+* **General Engineering degree**, École Centrale de Lyon, 2017
   * Statistics and econometry
   * Probability theory
   * Mathematics applied to biology (dynamical systems)
