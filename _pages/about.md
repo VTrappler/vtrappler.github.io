@@ -33,7 +33,8 @@ My research interests are (but not limited to)
 Relevant links
 ---
 * [PhD Dissertation (Successfully defended on Friday 11th June 2021)](https://vtrappler.github.io/files/trappler_dissertation.pdf)
-* [Academic Resume](https://vtrappler.github.io/files/academic_cv_TRAPPLER.pdf)
+* [Academic CV](https://vtrappler.github.io/files/academic_cv_TRAPPLER.pdf)
+* [Professional Resume](https://vtrappler.github.io/files/professional_resume_TRAPPLER.pdf)
 * [Publications](/publications/)
 * [GitLab repository dedicated to my PhD (in French)](https://gitlab.inria.fr/vtrapple/These)
 * [Teachings](/teaching/)
