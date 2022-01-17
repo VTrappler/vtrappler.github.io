@@ -30,6 +30,9 @@ Education
 
 Work experience
 ---
+* **Postdoctoral position** (December 2021 to December 2023): Data assimilation in latent spaces
+  * Joint Laboratory AI4Sim (part of Atos R&D) and AIRSEA (Inria research team)
+
 * **Master thesis** (January to July 2017): Parameter control in the presence of uncertainties
   * Inria research team AIRSEA, LJK, Grenoble (France)
   * Develop tools of estimation in python and R
