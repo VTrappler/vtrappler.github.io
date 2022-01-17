@@ -39,7 +39,7 @@ My research interests are (but not limited to)
 
 Relevant links
 ---
-* PhD Dissertation (defended on the 11th June 2021): [full-text](https://vtrappler.github.io/files/trappler_dissertation.pdf), [web-page](https://vtrappler.github.io/publications/2021-06-11-parameter-control-in-the-presence-of-uncertainties)
+* PhD Dissertation (defended on the 11th June 2021): [full-text](https://vtrappler.github.io/files/trappler_dissertation.pdf), [web-page](https://vtrappler.github.io/publication/2021-06-11-parameter-control-in-the-presence-of-uncertainties)
 * [Academic CV](https://vtrappler.github.io/files/academic_cv_TRAPPLER.pdf)
 * [Professional Resume](https://vtrappler.github.io/files/professional_resume_TRAPPLER.pdf)
 * [Publications](/publications/)
