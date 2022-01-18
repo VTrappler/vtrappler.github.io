@@ -1,8 +1,9 @@
 ---
 title: "Parameter control in the presence of uncertainties"
 collection: publications
-permalink: /publication/2021-06-11-parameter-control-in-the-presence-of-uncertainties.md
+permalink: /publication/2021-06-11-parameter-control-in-the-presence-of-uncertainties
 excerpt: 'My PhD dissertation, which focuses on the calibration of numerical models in the presence of uncertainties'
+venue: 'HAL open archive'
 date: 2021-11-06
 paperurl: 'https://tel.archives-ouvertes.fr/tel-03275015'
 citation: 'Victor Trappler. Parameter control in the presence of uncertainties. 2021'
