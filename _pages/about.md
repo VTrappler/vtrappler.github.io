@@ -22,6 +22,7 @@ repo](https://github.com/AI4SIM), which is part of Atos R&D
 department, and [AIRSEA](https://team.inria.fr/airsea/en/) (Inria
 research team), where I work on *Data Assimilation in latent spaces*.
 
+
 <!-- I defended my PhD in June 2021, at the Université Grenoble -->
 <!-- Alpes (Grenoble, France), in the Inria research team named -->
 <!-- [AIRSEA](https://team.inria.fr/airsea/en/). -->
@@ -40,7 +41,7 @@ My research interests are (but not limited to)
 Relevant links
 ---
 * PhD Dissertation (defended on the 11th June 2021): [full-text](https://vtrappler.github.io/files/trappler_dissertation.pdf), [web-page](https://vtrappler.github.io/publication/2021-06-11-parameter-control-in-the-presence-of-uncertainties)
-* [Academic CV](https://vtrappler.github.io/files/academic_cv_TRAPPLER.pdf)
+* [Academic CV](https://vtrappler.github.io/files/TRAPPLER_academic_CV.pdf)
 * [Professional Resume](https://vtrappler.github.io/files/professional_resume_TRAPPLER.pdf)
 * [Publications](/publications/)
 <!-- * [GitLab repository dedicated to my PhD (in French)](https://gitlab.inria.fr/vtrapple/These) -->
