@@ -82,9 +82,9 @@ analytics:
 author:
   name             : "Victor Trappler"
   avatar           : "profile.jpg"
-  bio              : "Postdoc in applied mathematics"
+  bio              : "Postdoc in Applied Mathematics"
   location         : "Grenoble"
-  employer         :  Joint Lab AI4Sim/AIRSEA (Atos/Inria)
+  employer         :  Joint Lab AI4Sim/AIRSEA
   googlescholar    :
   email            :
   uri              :
@@ -100,7 +100,7 @@ author:
   instagram        :
   lastfm           :
   linkedin         : victortrappler
-  orcid            : 0000-0003-4620-4861
+  orcid            : "https://orcid.org/0000-0003-4620-4861"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
