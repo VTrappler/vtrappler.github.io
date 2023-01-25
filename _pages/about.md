@@ -21,6 +21,9 @@ laboratory between AI4Sim ([Github public
 repo](https://github.com/AI4SIM), which is part of Atos R&D
 department, and [AIRSEA](https://team.inria.fr/airsea/en/) (Inria
 research team), where I work on *Data Assimilation in latent spaces*.
+In this postdoc, I work on 
+* Building preconditioners for Variational Data Assimilation (using ML)
+* Non-Linear Dimension reduction
 
 
 <!-- I defended my PhD in June 2021, at the Université Grenoble -->
@@ -44,8 +47,12 @@ Relevant links
 ### Publications and PhD Dissertation
 * PhD Dissertation (defended on the 11th June 2021): [full-text](https://vtrappler.github.io/files/trappler_dissertation.pdf), [web-page](https://vtrappler.github.io/publication/2021-06-11-parameter-control-in-the-presence-of-uncertainties)
 * [Publications](/publications/)
+
+
 ### Repositories
 * [robustGP](https://github.com/VTrappler/robustGP/tree/dev): I recently put work again on the implementation of a python package to construct and run Adaptive design methods based on Gaussian Processes
+
+
 ### Resumes
 * [Academic CV](https://vtrappler.github.io/files/TRAPPLER_academic_CV.pdf)
 * [Professional Resume](https://vtrappler.github.io/files/professional_resume_TRAPPLER.pdf)
