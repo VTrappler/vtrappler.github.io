@@ -52,7 +52,8 @@ Relevant links
 
 ### Repositories
 * [robustGP](https://github.com/VTrappler/robustGP/tree/dev): I recently put work again on the implementation of a python package to construct and run Adaptive design methods based on Gaussian Processes
-
+* [ML_preconditioners](https://github.com/VTrappler/ML_preconditioners): Use ML to construct and test preconditioners in Variational Data Assimilation
+* [DA_PoC](https://github.com/VTrappler/DA_PoC): Library to test and prototype quickly Data Assimilation procedures
 
 ### Teaching
 * [List of teachings](/teaching/)
