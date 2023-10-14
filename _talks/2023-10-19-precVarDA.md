@@ -1,5 +1,5 @@
 ---
-title: "Poster: State-dependent Preconditioning for Variational Data Assimilation"
+title: "State-dependent Preconditioning for Variational Data Assimilation"
 collection: talks
 type: "Poster"
 permalink: /talks/2023-10-19-precVarDA
