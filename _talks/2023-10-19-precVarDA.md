@@ -4,7 +4,7 @@ collection: talks
 type: "Poster"
 permalink: /talks/2023-10-19-precVarDA
 venue: " 9th International Symposium on Data Assimilation"
-date: 2020-09-18
+date: 2023-10-19
 location: "Bologna, Italy"
 ---
 
