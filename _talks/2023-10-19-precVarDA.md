@@ -9,4 +9,6 @@ location: "Bologna, Italy"
 ---
 
 Poster presented at [International Symposium on Data Assimilation](https://eventi.unibo.it/isda2023).
+
+
 Update on the poster presented at [link to Liège poster](https://hal.science/hal-04087646)
