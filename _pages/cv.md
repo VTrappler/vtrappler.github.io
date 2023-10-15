@@ -9,9 +9,9 @@ redirect_from:
 
 {% include base_path %}
 
-PDF Version (last update: 23/12/2020)
+PDF Version (last update: 23/12/2022)
 ---
-[Get the pdf version of my academic cv by clicking here](https://vtrappler.github.io/files/academic_cv_TRAPPLER.pdf)
+[Get the pdf version of my academic cv by clicking here](https://vtrappler.github.io/files/TRAPPLER_academic_CV.pdf)
 
 Education
 ---
