@@ -18,9 +18,9 @@ Who am I ?
 ---
 As of december 2021, I am a postdoctoral researcher in the joint
 laboratory between AI4Sim ([Github public
-repo](https://github.com/AI4SIM), which is part of Atos R&D
+repo](https://github.com/AI4SIM), which is part of Eviden R&D
 department, and [AIRSEA](https://team.inria.fr/airsea/en/) (Inria
-research team), where I work on *Data Assimilation in latent spaces*.
+research team).
 In this postdoc, I work on 
 * Building preconditioners for Variational Data Assimilation (using ML)
 * Non-Linear Dimension reduction
