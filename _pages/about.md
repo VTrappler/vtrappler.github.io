@@ -41,6 +41,10 @@ My research interests are (but not limited to)
 * Modelling of the ocean
 
 
+### CV and Resume
+* [Academic CV](https://vtrappler.github.io/files/TRAPPLER_academic_CV.pdf)
+* [Professional Resume](https://vtrappler.github.io/files/professional_resume_TRAPPLER.pdf)
+
 Relevant links
 ---
 
@@ -59,9 +63,6 @@ Relevant links
 * [List of teachings](/teaching/)
 
 
-### Resumes
-* [Academic CV](https://vtrappler.github.io/files/TRAPPLER_academic_CV.pdf)
-* [Professional Resume](https://vtrappler.github.io/files/professional_resume_TRAPPLER.pdf)
 <!-- * [GitLab repository dedicated to my PhD (in French)](https://gitlab.inria.fr/vtrapple/These) -->
 
 
