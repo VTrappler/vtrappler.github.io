@@ -16,12 +16,13 @@ work-related), and share some small personal projects.
 
 Who am I ?
 ---
-As of december 2021, I am a postdoctoral researcher in the joint
+PhD in Applied Mathematics, I am looking for a postdoctoral or scientist position.
+Until december 2023, I was a postdoctoral researcher in the joint
 laboratory between AI4Sim ([Github public
 repo](https://github.com/AI4SIM), which is part of Eviden R&D
 department, and [AIRSEA](https://team.inria.fr/airsea/en/) (Inria
 research team).
-In this postdoc, I work on 
+In this postdoc, I worked on 
 * Building preconditioners for Variational Data Assimilation (using ML)
 * Non-Linear Dimension reduction
 
@@ -34,12 +35,12 @@ Research interests
 ---
 My research interests are (but not limited to)
 * Uncertainty Quantification
-* Data Assimilation
-* Dimension Reduction
+* Data Assimilation & ML
 * Optimisation Under Uncertainties
+* Dimension Reduction
 * Calibration of numerical models
-* Modelling of the ocean
 
+All of this applied to geophysics.
 
 ### CV and Resume
 * [Academic CV](https://vtrappler.github.io/files/TRAPPLER_academic_CV.pdf)
