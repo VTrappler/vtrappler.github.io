@@ -16,7 +16,8 @@ work-related), and share some small personal projects.
 
 Who am I ?
 ---
-PhD in Applied Mathematics, I am looking for a postdoctoral or scientist position.
+PhD in Applied Mathematics, I recently started a postdoctoral position at [ICJ](https://math.univ-lyon1.fr/icj), hosted at [École Centrale de Lyon](https://www.ec-lyon.fr/en/research-centrale-lyon), where I work on *Multi-Objective Optimization under Uncertainties, with chance constraints*.
+
 Until december 2023, I was a postdoctoral researcher in the joint
 laboratory between AI4Sim ([Github public
 repo](https://github.com/AI4SIM), which is part of Eviden R&D
@@ -26,10 +27,6 @@ In this postdoc, I worked on
 * Building preconditioners for Variational Data Assimilation (using ML)
 * Non-Linear Dimension reduction
 
-
-<!-- I defended my PhD in June 2021, at the Université Grenoble -->
-<!-- Alpes (Grenoble, France), in the Inria research team named -->
-<!-- [AIRSEA](https://team.inria.fr/airsea/en/). -->
 
 Research interests
 ---
