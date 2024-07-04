@@ -16,7 +16,9 @@ work-related), and share some small personal projects.
 
 Who am I ?
 ---
-PhD in Applied Mathematics, I recently started a postdoctoral position at [ICJ](https://math.univ-lyon1.fr/icj), hosted at [École Centrale de Lyon](https://www.ec-lyon.fr/en/research/research-centrale-lyon), where I work on *Multi-Objective Optimization under Uncertainties, with chance constraints*.
+PhD in Applied Mathematics, I recently started a postdoctoral position at [ICJ](https://math.univ-lyon1.fr/icj), hosted at [École Centrale de Lyon](https://www.ec-lyon.fr/en/research/research-centrale-lyon), where I work on *Multi-Objective Optimization under Uncertainties* using Bayesian Optimization.
+
+In a Science popularization purpose, [a short presentation](https://vtrappler.github.io/files/MOO_stage_2nd-1.pdf) I made for high-school interns about Optimization and Multiobjective Optimization (in french).
 
 Until december 2023, I was a postdoctoral researcher in the joint
 laboratory between AI4Sim ([Github public
