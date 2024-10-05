@@ -18,7 +18,7 @@ Who am I ?
 ---
 PhD in Applied Mathematics, I recently started a postdoctoral position at [ICJ](https://math.univ-lyon1.fr/icj), hosted at [École Centrale de Lyon](https://www.ec-lyon.fr/en/research/research-centrale-lyon), where I work on *Multi-Objective Optimization under Uncertainties* using Bayesian Optimization.
 
-In a Science popularization purpose, [a short presentation](https://vtrappler.github.io/files/MOO_stage_2nd-1.pdf) I made for high-school interns about Optimization and Multiobjective Optimization (in french).
+In a science popularization purpose, [a short presentation](https://vtrappler.github.io/files/MOO_stage_2nd-1.pdf) I made for high-school interns about Optimization and Multiobjective Optimization (in french).
 
 Until december 2023, I was a postdoctoral researcher in the joint
 laboratory between AI4Sim ([Github public
@@ -27,6 +27,7 @@ department, and [AIRSEA](https://team.inria.fr/airsea/en/) (Inria
 research team).
 In this postdoc, I worked on 
 * Building preconditioners for Variational Data Assimilation (using ML)
+  * [Preprint available here](https://hal.science/hal-04707967)
 * Non-Linear Dimension reduction
 
 
