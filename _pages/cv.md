@@ -12,7 +12,7 @@ redirect_from:
 Direct Links
 ---
 
-+ [Academic CV (pdf)](https://vtrappler.github.io/files/TRAPPLER_Academic_CV.pdf)
++ [Academic CV (pdf)](https://vtrappler.github.io/files/TRAPPLER_academic_CV.pdf)
 + [Professional CV (pdf)](https://vtrappler.github.io/files/professional_resume_TRAPPLER.pdf)
 
 
@@ -33,6 +33,9 @@ Education
 
 Work experience
 ---
+* **Postdoctoral position** (April 2024 to March 2025): Multiobjective Optimization under Uncertainties
+  * École Centrale de Lyon / Institut Camille Jordan, Lyon
+
 * **Postdoctoral position** (December 2021 to December 2023): Data assimilation in latent spaces
   * Joint Laboratory AI4Sim (part of Atos R&D) and AIRSEA (Inria research team)
 
