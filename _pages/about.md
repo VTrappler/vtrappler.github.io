@@ -45,6 +45,7 @@ My research interests are (but not limited to)
 
 ### Science Dissemination
 * In a science popularization purpose, [a short presentation](https://vtrappler.github.io/files/MOO_stage_2nd-1.pdf) I made for high-school interns about Optimization and Multiobjective Optimization (in french).
+* My former team made a video explaining [the modelling of the ocean](https://www.youtube.com/watch?v=pyVq1ibag_g&ab_channel=L%27EspritSorcierTV) (in french)
 
 ### Repositories
 * [robustGP](https://github.com/VTrappler/robustGP/tree/dev): I recently put work again on the implementation of a python package to construct and run Adaptive design methods based on Gaussian Processes
