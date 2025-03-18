@@ -11,7 +11,7 @@ redirect_from:
 ## Who am I ?
 
 PhD in Applied Mathematics, I started in April 2024 a postdoctoral position at [ICJ](https://math.univ-lyon1.fr/icj), hosted at [École Centrale de Lyon](https://www.ec-lyon.fr/en/research/research-centrale-lyon), where I work on *Multi-Objective Optimization under Uncertainties* using Bayesian Optimization.
-
+* Multiobjective Optimization under uncertainties using Pareto Conditional Fronts [Preprint available here](https://hal.science/hal-04994978)
 
 Until december 2023, I was a postdoctoral researcher in the joint
 laboratory between AI4Sim ([Github public
