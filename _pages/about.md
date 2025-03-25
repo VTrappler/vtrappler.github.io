@@ -10,17 +10,19 @@ redirect_from:
 
 ## Who am I ?
 
-PhD in Applied Mathematics, I started in April 2024 a postdoctoral position at [ICJ](https://math.univ-lyon1.fr/icj), hosted at [École Centrale de Lyon](https://www.ec-lyon.fr/en/research/research-centrale-lyon), where I work on *Multi-Objective Optimization under Uncertainties* using Bayesian Optimization.
-* Multiobjective Optimization under uncertainties using Pareto Conditional Fronts [Preprint available here](https://hal.science/hal-04994978)
+PhD in Applied Mathematics, I'm interested in Optimization under Uncertainties, Uncertainty Quantification, Data Assimilation, Machine Learning.
 
-Until december 2023, I was a postdoctoral researcher in the joint
+* From April 2024 to April 2025, I held a postdoctoral position at [ICJ](https://math.univ-lyon1.fr/icj), hosted at [École Centrale de Lyon](https://www.ec-lyon.fr/en/research/research-centrale-lyon), where I worked on *Multi-Objective Optimization under Uncertainties* using Bayesian Optimization.
+  * Multiobjective Optimization under uncertainties using Pareto Conditional Fronts: [Preprint](https://hal.science/hal-04994978)
+
+* From december 2021 to december 2023, I was a postdoctoral researcher in the joint
 laboratory between AI4Sim ([Github public
 repo](https://github.com/AI4SIM), which is part of Eviden R&D
 department, and [AIRSEA](https://team.inria.fr/airsea/en/) (Inria
 research team).
 In this postdoc, I worked on 
-* Building preconditioners for Variational Data Assimilation (using ML) [Preprint available here](https://hal.science/hal-04707967)
-* Non-Linear Dimension reduction
+  * Building preconditioners for Variational Data Assimilation (using ML): [Preprint](https://hal.science/hal-04707967)
+  * Non-Linear Dimension reduction
 
 ### Research interests
 
