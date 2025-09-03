@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Victor Trappler"
 title_separator          : "-"
 name                     : &name "Victor Trappler"
-description              : &description "Postdoc in Applied Mathematics"
+description              : &description "Maître de conférence"
 url                      : https://vtrappler.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "vtrappler.github.io"
@@ -82,9 +82,9 @@ analytics:
 author:
   name             : "Victor Trappler"
   avatar           : "profile.jpg"
-  bio              : "Postdoc in Applied Mathematics"
-  location         : "EC Lyon"
-  employer         : "Institut Camille Jordan"
+  bio              : "Associate professor"
+  location         : "Mines Saint-Etienne"
+  employer         : "Institut Henri Fayol / LIMOS"
   googlescholar    :
   email            :
   uri              :
