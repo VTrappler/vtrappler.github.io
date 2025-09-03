@@ -12,6 +12,8 @@ redirect_from:
 
 PhD in Applied Mathematics, I'm interested in Optimization under Uncertainties, Uncertainty Quantification, Data Assimilation, Machine Learning.
 
+* Starting from September 2025, I am a Maître de Conférences (~associate professor) in the [GMI department](https://www.mines-stetienne.fr/recherche/centres-et-departements/departement-genie-mathematique-et-industriel/) of [Institut Henri Fayol](https://www.mines-stetienne.fr/recherche/centres-et-departements/institut-henri-fayol/recherche/), which is part of [Mines Saint-Etienne](https://www.mines-stetienne.fr/).
+
 * From April 2024 to April 2025, I held a postdoctoral position at [ICJ](https://math.univ-lyon1.fr/icj), hosted at [École Centrale de Lyon](https://www.ec-lyon.fr/en/research/research-centrale-lyon), where I worked on *Multi-Objective Optimization under Uncertainties* using Bayesian Optimization.
   * [Multiobjective Optimization under uncertainties using Conditional Pareto Fronts (Preprint)](https://hal.science/hal-04994978) 
 
