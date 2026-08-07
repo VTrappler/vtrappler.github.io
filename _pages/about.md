@@ -10,7 +10,7 @@ redirect_from:
 
 ## Who am I ?
 
-PhD in Applied Mathematics, I am a Maître de Conférences (~associate professor) since September 2025 in the [GMI department](https://www.mines-stetienne.fr/recherche/centres-et-departements/departement-genie-mathematique-et-industriel/) of [Institut Henri Fayol](https://www.mines-stetienne.fr/recherche/centres-et-departements/institut-henri-fayol/recherche/) and [LIMOS](https://limos.fr/), which is part of [Mines Saint-Etienne](https://www.mines-stetienne.fr/).
+PhD in Applied Mathematics, I am a Maître de Conférences (~associate professor) since September 2025 in the [GMI department](https://www.mines-stetienne.fr/recherche/centres-et-departements/departement-genie-mathematique-et-industriel/) of [Institut Henri Fayol](https://www.mines-stetienne.fr/recherche/centres-et-departements/institut-henri-fayol/recherche/) which is part of [Mines Saint-Etienne](https://www.mines-stetienne.fr/).
 
 My research interests are (but not limited to)
 * Uncertainty Quantification
