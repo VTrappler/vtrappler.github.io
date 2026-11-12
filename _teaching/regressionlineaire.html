@@ -249,8 +249,10 @@
         <h1>Régression Linéaire</h1>
       </header>
       <p class="lead">
-        On s'intéresse au problème de régression linéaire <strong>y = \(\beta_0 + \beta_1 \cdot x\)</strong>.
-        Utilise les sliders pour ajuster <strong>\(\beta_0\)</strong>, <strong>\(\beta_1\)</strong>, <strong>\(\sigma\)</strong> et <strong>N</strong>.
+        On s'intéresse au problème de régression linéaire \(y = \beta_0 + \beta_1 \cdot x + \epsilon\). On a ici \(x\in [0, 10]\)<br>
+        Les sliders à gauche permettent de choisir les valeurs de \(\beta_0\), \(\beta_1\), \(\sigma\) et \(N\) (le nombre d'échantillons), afin de générer le jeu de données \((x_i,y_i)\). <br>
+
+        À droite se trouvent les valeurs des paramètres estimés \(\hat{\beta}_0\), \(\hat{\beta}_1\), \(\hat{\sigma}\), ainsi que le \(R^2\).
       </p>
 
       <div class="row">
@@ -457,10 +459,10 @@ fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
 ax.plot(x_true, y_true, color="g", label="Vérité", lw=5)
 ax.plot(x_true, beta_1_hat*x_true + beta_0_hat, label="MCO", color="red", lw=5)
 ax.scatter(x, y, label="Échantillons")
-if ${display_conf}:
-    ax.fill_between(x_true, pi_upper, pi_lower, color="C1", alpha=0.4, label='Int. Pred.')
 if ${display_pred}:
-    ax.fill_between(x_true, ci_upper, ci_lower, color="C0", alpha=0.4, label='Int. Conf.')
+    ax.fill_between(x_true, pi_upper, pi_lower, color="C0", alpha=0.2, label='Int. Pred.')
+if ${display_conf}:
+    ax.fill_between(x_true, ci_upper, ci_lower, color="red", alpha=0.2, label='Int. Conf.')
 
 print(ci_upper)
 # Configure the plot
@@ -562,7 +564,7 @@ window.variablesResult = json.dumps({
 
         log('\nGénération du graphique...');
         try {
-          const code = getPythonCode(beta0, beta1, sigma, N, confidence, 0, 0);
+          const code = getPythonCode(beta0, beta1, sigma, N, confidence, 1, 1);
           await pyodide.runPythonAsync(code);
 
           // Retrieve variables from the global variable
