@@ -177,6 +177,19 @@
         transition: background 0.2s ease;
       }
 
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .checkbox-container label {
+        cursor: pointer;
+        color: var(--text);
+        font-size: 14px;
+      }
+
       .controls button:hover {
         background: #0b5ed7;
       }
@@ -292,7 +305,27 @@
               <label for="confidence-slider">Niveau de confiance: <span id="confidence-value" class="slider-value">80.0</span></label>
               <input type="range" id="confidence-slider" min="5.0" max="100.0" step="1" value="90">
             </div>
-
+        <!-- Checkboxes for toggling plot elements -->
+            <div class="checkbox-container">
+              <input type="checkbox" id="show-samples" checked>
+              <label for="show-samples">Afficher les échantillons</label>
+            </div>
+            <div class="checkbox-container">
+              <input type="checkbox" id="show-mco" checked>
+              <label for="show-mco">Afficher la droite MCO</label>
+            </div>
+            <div class="checkbox-container">
+              <input type="checkbox" id="show-truth" checked>
+              <label for="show-truth">Afficher la vérité</label>
+            </div>
+              <div class="checkbox-container">
+              <input type="checkbox" id="show-IC" unchecked>
+              <label for="show-truth">Intervalle de confiance</label>
+            </div>
+              <div class="checkbox-container">
+              <input type="checkbox" id="show-IP" unchecked>
+              <label for="show-truth">Intervalle de prédiction</label>
+            </div>
             <button id="update-btn" class="btn">Ré-échantilloner</button>
           </div>
 
@@ -357,6 +390,11 @@
       const NValue = document.getElementById('N-value');
       const confidenceSlider = document.getElementById('confidence-slider');
       const confidenceValue = document.getElementById('confidence-value');
+      const showSamplesCheckbox = document.getElementById('show-samples');
+      const showMCOCheckbox = document.getElementById('show-mco');
+      const showTruthCheckbox = document.getElementById('show-truth');
+      const showICCheckbox = document.getElementById('show-IC');
+      const showIPCheckbox = document.getElementById('show-IP');
 
 
       // Define logarithmic scales
@@ -402,7 +440,7 @@
       NValue.textContent = Math.round(Math.exp(initialNLog));
 
       // Python code to generate the plot and return variables
-      function getPythonCode(beta0, beta1, sigma, N, confidence, display_conf, display_pred) {
+      function getPythonCode(beta0, beta1, sigma, N, confidence, display_samples, display_mco, display_truth, display_conf, display_pred) {
         return `
 import numpy as np
 import json
@@ -456,16 +494,16 @@ pi_lower = y_all_pred - t_crit * sigma_hat * np.sqrt(1 + 1 / n_samples + (x_true
 # Create the plot
 
 fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
-ax.plot(x_true, y_true, color="g", label="Vérité", lw=5)
-ax.plot(x_true, beta_1_hat*x_true + beta_0_hat, label="MCO", color="red", lw=5)
-ax.scatter(x, y, label="Échantillons")
-if ${display_pred}:
-    ax.fill_between(x_true, pi_upper, pi_lower, color="C0", alpha=0.2, label='Int. Pred.')
-if ${display_conf}:
-    ax.fill_between(x_true, ci_upper, ci_lower, color="red", alpha=0.2, label='Int. Conf.')
+${display_truth ? `ax.plot(x_true, y_true, color="g", label="Vérité", lw=3)` : ''}
+${display_mco ? `ax.plot(x_true, beta_1_hat*x_true + beta_0_hat, label="MCO", color="red", lw=3)` : ''}
+${display_samples ? `ax.scatter(x, y, label="Échantillons")` : ''}
+${display_pred ? `ax.fill_between(x_true, pi_upper, pi_lower, color="C0", alpha=0.2, label='Int. Pred.')
+` : ''}
+${display_conf ? `ax.fill_between(x_true, ci_upper, ci_lower, color="red", alpha=0.2, label='Int. Conf.')` : ''}
 
-print(ci_upper)
+
 # Configure the plot
+ax.set_xlim([0, 10])
 ax.set_title("Régression linéaire")
 ax.set_xlabel("$x$: Prédicteur")
 ax.set_ylabel("$y$: Réponse")
@@ -523,6 +561,32 @@ window.variablesResult = json.dumps({
         await runDemo(pyodideReady);
       });
 
+
+            // Update plot when checkboxes change
+      showSamplesCheckbox.addEventListener('change', async () => {
+        if (!pyodideReady) return;
+        await runDemo(pyodideReady);
+      });
+
+      showMCOCheckbox.addEventListener('change', async () => {
+        if (!pyodideReady) return;
+        await runDemo(pyodideReady);
+      });
+
+      showTruthCheckbox.addEventListener('change', async () => {
+        if (!pyodideReady) return;
+        await runDemo(pyodideReady);
+      });
+
+      showICCheckbox.addEventListener('change', async () => {
+        if (!pyodideReady) return;
+        await runDemo(pyodideReady);
+      });
+      showIPCheckbox.addEventListener('change', async () => {
+        if (!pyodideReady) return;
+        await runDemo(pyodideReady);
+      });
+
       // Function to display logs
       function log(msg) {
         statusEl.textContent += msg + "\n";
@@ -552,8 +616,8 @@ window.variablesResult = json.dumps({
       async function runDemo(pyodide) {
         statusEl.textContent = '';
         log('# Environnement Python prêt');
-        log('• numpy ' + pyodide.runPython('import numpy as np; np.__version__'));
-        log('• matplotlib ' + pyodide.runPython('import matplotlib as m; m.__version__'));
+        // log('• numpy ' + pyodide.runPython('import numpy as np; np.__version__'));
+        // log('• matplotlib ' + pyodide.runPython('import matplotlib as m; m.__version__'));
 
         // Get actual values (logarithmic for sigma and N)
         const beta0 = beta0Slider.value;
@@ -561,10 +625,14 @@ window.variablesResult = json.dumps({
         const sigma = Math.exp(sigmaMinLog + (sigmaSlider.value / sigmaSliderRange) * (sigmaMaxLog - sigmaMinLog));
         const N = Math.round(Math.exp(NMinLog + (NSlider.value / NSliderRange) * (NMaxLog - NMinLog)));
         const confidence = confidenceSlider.value;
-
+        const showSamples = showSamplesCheckbox.checked;
+        const showMCO = showMCOCheckbox.checked;
+        const showTruth = showTruthCheckbox.checked;
+        const showIC = showICCheckbox.checked;
+        const showIP = showIPCheckbox.checked;
         log('\nGénération du graphique...');
         try {
-          const code = getPythonCode(beta0, beta1, sigma, N, confidence, 1, 1);
+          const code = getPythonCode(beta0, beta1, sigma, N, confidence, showSamples, showMCO, showTruth, showIC, showIP);
           await pyodide.runPythonAsync(code);
 
           // Retrieve variables from the global variable
