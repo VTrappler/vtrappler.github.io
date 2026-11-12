@@ -8,9 +8,13 @@ author_profile: true
 You can also find my documents on [HAL](https://cv.hal.science/victor-trappler) or [Google Scholar](https://scholar.google.com/citations?user=_AoFPjkAAAAJ&hl=fr)
 
 ## Preprints
-* [Victor Trappler, Arthur Vidard. State-dependent preconditioning for the inner-loop in Variational Data Assimilation using Machine Learning. 2025. ⟨hal-04707967v3⟩](https://hal.science/hal-04994978)
 
-* [Victor Trappler, Céline Helbert, Rodolphe Le Riche. Multiobjective Optimization under Uncertainties using Conditional Pareto Fronts. 2025. ⟨hal-04994978⟩](https://hal.science/hal-04707967)
+* [**Victor Trappler**. Expected Hypervolume Maximization for Multiobjective Optimization under Uncertainties ⟨hal-05720605⟩](https://hal.science/hal-05720605)
+
+* [**Victor Trappler**, Céline Helbert, Rodolphe Le Riche. Multiobjective Optimization under Uncertainties using Conditional Pareto Fronts. 2025. ⟨hal-04994978⟩](https://hal.science/hal-04707967)
+
+* [**Victor Trappler**, Arthur Vidard. State-dependent preconditioning for the inner-loop in Variational Data Assimilation using Machine Learning. 2025. ⟨hal-04707967v3⟩](https://hal.science/hal-04994978)
+
 
 ## Publications
 
