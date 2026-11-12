@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Régression Linéaire</title>
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --card: #f8f9fa;
+        --text: #212529;
+        --muted: #6c757d;
+        --accent: #0d6efd;
+        --border: #dee2e6;
+      }
+
+      html, body {
+        height: 100%;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+        display: flex;
+        flex-direction: column;
+      }
+
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 32px 16px 60px;
+        flex: 1;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      header .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 16px rgba(13, 110, 253, 0.5);
+      }
+
+      h1 {
+        font-size: clamp(22px, 3.2vw, 34px);
+        margin: 0;
+        letter-spacing: 0.2px;
+        color: var(--text);
+      }
+
+      p.lead {
+        color: var(--muted);
+        margin: 6px 0 22px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      @media (min-width: 920px) {
+        .row {
+          grid-template-columns: 360px 1fr;
+        }
+      }
+
+      .status {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 14px;
+        line-height: 1.4;
+        color: var(--muted);
+        white-space: pre-wrap;
+        background: #fff;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+      }
+
+      .spinner {
+        width: 14px;
+        height: 14px;
+        border: 2px solid var(--border);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .imgwrap {
+        display: grid;
+        place-items: center;
+        min-height: 420px;
+        background: var(--card);
+        border-radius: 14px;
+        border: 1px dashed var(--border);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+      }
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .controls label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        color: var(--text);
+      }
+
+      .controls input[type="range"] {
+        width: 100%;
+        cursor: pointer;
+        accent-color: var(--accent);
+      }
+
+      .controls select,
+      .controls button {
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        font-family: inherit;
+      }
+
+      .controls button {
+        cursor: pointer;
+        background: var(--accent);
+        color: white;
+        border: 1px solid var(--accent);
+        transition: background 0.2s ease;
+      }
+
+      .controls button:hover {
+        background: #0b5ed7;
+      }
+
+      .controls button:active {
+        transform: translateY(1px);
+      }
+
+      .slider-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .slider-value {
+        font-size: 12px;
+        color: var(--muted);
+        text-align: right;
+      }
+
+      .footnote {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+
+      /* Style for the variables table */
+      .variables-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 12px;
+        color: var(--text);
+      }
+
+      .variables-table th,
+      .variables-table td {
+        border: 1px solid var(--border);
+        padding: 8px;
+        text-align: left;
+      }
+
+      .variables-table th {
+        background: var(--card);
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .variables-table tr:nth-child(even) {
+        background: #fff;
+      }
+
+      /* Footer style */
+      footer {
+        background: var(--card);
+        border-top: 1px solid var(--border);
+        padding: 16px;
+        text-align: center;
+        font-size: 14px;
+        color: var(--muted);
+        margin-top: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <span class="dot"></span>
+        <h1>Régression Linéaire</h1>
+      </header>
+      <p class="lead">
+        On s'intéresse au problème de régression linéaire <strong>y = \(\beta_0 + \beta_1 \cdot x\)</strong>.
+        Utilise les sliders pour ajuster <strong>\(\beta_0\)</strong>, <strong>\(\beta_1\)</strong>, <strong>\(\sigma\)</strong> et <strong>N</strong>.
+      </p>
+
+      <div class="row">
+        <div class="card">
+          <div class="badge">
+            <span class="spinner" id="spinner"></span>
+            <span id="phase">Chargement de Pyodide...</span>
+          </div>
+          <pre class="status" id="status"></pre>
+
+          <div class="controls">
+            <!-- N Slider (Logarithmic) -->
+            <div class="slider-container">
+              <label for="N-slider">N: <span id="N-value" class="slider-value">10</span></label>
+              <input type="range" id="N-slider" min="0" max="100" step="1" value="23"> <!-- log(10) ~ 23 if min=log(2) and max=log(1000) -->
+            </div>
+
+            <!-- Beta0 Slider (Linear) -->
+            <div class="slider-container">
+              <label for="beta0-slider">\(\beta_0\): <span id="beta0-value" class="slider-value">0.0</span></label>
+              <input type="range" id="beta0-slider" min="-10" max="10" step="0.1" value="0">
+            </div>
+
+            <!-- Beta1 Slider (Linear) -->
+            <div class="slider-container">
+              <label for="beta1-slider">\(\beta_1\): <span id="beta1-value" class="slider-value">1.0</span></label>
+              <input type="range" id="beta1-slider" min="-5" max="5" step="0.1" value="10">
+            </div>
+
+            <!-- Sigma Slider (Logarithmic) -->
+            <div class="slider-container">
+              <label for="sigma-slider">\(\sigma\): <span id="sigma-value" class="slider-value">1.0</span></label>
+              <input type="range" id="sigma-slider" min="0" max="100" step="1" value="44"> <!-- log(1.0) ~ 44 if min=log(0.001) and max=log(10) -->
+            </div>
+            <!-- Beta1 Slider (Linear) -->
+            <div class="slider-container">
+              <label for="confidence-slider">Niveau de confiance: <span id="confidence-value" class="slider-value">80.0</span></label>
+              <input type="range" id="confidence-slider" min="5.0" max="100.0" step="1" value="90">
+            </div>
+
+            <button id="update-btn" class="btn">Ré-échantilloner</button>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-top:10px;">
+            <button id="rerun" class="btn" disabled>Relancer</button>
+            <!-- <button id="showcode" class="btn">Voir le code Python</button> -->
+          </div>
+          <pre class="status" id="pycode" style="display:none; margin-top:10px;"></pre>
+
+          <div class="footnote">
+            CDN : Pyodide, numpy et matplotlib sont chargés à la demande. Le premier chargement peut prendre quelques secondes.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="imgwrap">
+            <img id="plot" alt="Le graphique s'affichera ici" />
+          </div>
+          <!-- Variables table under the figure -->
+          <h3 style="margin-top: 20px; color: var(--text);">Paramètres de la régression</h3>
+          <table class="variables-table">
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Valeur</th>
+              </tr>
+            </thead>
+            <tbody id="variables-table-body">
+              <!-- Variables will be displayed here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer with your name -->
+    <footer>
+      Victor TRAPPLER, École des Mines de Saint-Étienne
+    </footer>
+
+    <!-- Pyodide runtime -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+    <script>
+      const statusEl = document.getElementById('status');
+      const phaseEl = document.getElementById('phase');
+      const spinnerEl = document.getElementById('spinner');
+      const rerunBtn = document.getElementById('rerun');
+      // const showBtn = document.getElementById('showcode');
+      const codeEl = document.getElementById('pycode');
+      const updateBtn = document.getElementById('update-btn');
+      const plotEl = document.getElementById('plot');
+      const variablesTableBody = document.getElementById('variables-table-body');
+
+      // Sliders
+      const beta0Slider = document.getElementById('beta0-slider');
+      const beta1Slider = document.getElementById('beta1-slider');
+      const sigmaSlider = document.getElementById('sigma-slider');
+      const NSlider = document.getElementById('N-slider');
+      const beta0Value = document.getElementById('beta0-value');
+      const beta1Value = document.getElementById('beta1-value');
+      const sigmaValue = document.getElementById('sigma-value');
+      const NValue = document.getElementById('N-value');
+      const confidenceSlider = document.getElementById('confidence-slider');
+      const confidenceValue = document.getElementById('confidence-value');
+
+
+      // Define logarithmic scales
+      const sigmaMinLog = Math.log(0.1); // log(0.001)
+      const sigmaMaxLog = Math.log(20);    // log(10)
+      const sigmaSliderRange = 100;        // Slider range (0 to 100)
+
+      const NMinLog = Math.log(3);        // log(2)
+      const NMaxLog = Math.log(1000);      // log(1000)
+      const NSliderRange = 100;           // Slider range (0 to 100)
+
+      // Update displayed slider values
+      beta0Slider.addEventListener('input', () => {
+        beta0Value.textContent = beta0Slider.value;
+      });
+
+      beta1Slider.addEventListener('input', () => {
+        beta1Value.textContent = beta1Slider.value;
+      });
+      confidenceSlider.addEventListener('input', () => {
+        confidenceValue.textContent =confidenceSlider.value;
+      });
+
+      sigmaSlider.addEventListener('input', () => {
+        // Convert slider position to logarithmic value
+        const logValue = sigmaMinLog + (sigmaSlider.value / sigmaSliderRange) * (sigmaMaxLog - sigmaMinLog);
+        const actualValue = Math.exp(logValue); // Convert back to linear scale
+        sigmaValue.textContent = actualValue.toFixed(3);
+      });
+
+      NSlider.addEventListener('input', () => {
+        // Convert slider position to logarithmic value
+        const logValue = NMinLog + (NSlider.value / NSliderRange) * (NMaxLog - NMinLog);
+        const actualValue = Math.round(Math.exp(logValue)); // Round to nearest integer
+        NValue.textContent = actualValue;
+      });
+
+      // Initialize slider displays
+      const initialSigmaLog = sigmaMinLog + (sigmaSlider.value / sigmaSliderRange) * (sigmaMaxLog - sigmaMinLog);
+      sigmaValue.textContent = Math.exp(initialSigmaLog).toFixed(3);
+
+      const initialNLog = NMinLog + (NSlider.value / NSliderRange) * (NMaxLog - NMinLog);
+      NValue.textContent = Math.round(Math.exp(initialNLog));
+
+      // Python code to generate the plot and return variables
+      function getPythonCode(beta0, beta1, sigma, N, confidence, display_conf, display_pred) {
+        return `
+import numpy as np
+import json
+import matplotlib
+import scipy.stats as stats
+matplotlib.use("agg")
+import matplotlib.pyplot as plt
+from js import document, window
+import io, base64
+
+# Generate data
+x_true = np.linspace(0, 10, 1000)
+beta0 = ${beta0}
+beta1 = ${beta1}
+sigma = ${sigma}
+y_true = ${beta0} + ${beta1} * x_true
+
+n_samples = ${N}
+x = np.random.rand(n_samples) * 10
+y = ${beta0} + ${beta1} * x + sigma * np.random.randn(n_samples)
+
+xbar, ybar = np.mean(x), np.mean(y)
+cov_xy = np.sum(x * y / n_samples) - xbar * ybar
+sxx2 = np.mean(x**2) - xbar**2
+beta_1_hat = cov_xy / sxx2
+sxx = np.sum((x - xbar)**2)
+
+beta_0_hat = ybar - beta_1_hat * xbar
+y_pred = beta_0_hat + beta_1_hat * x
+y_all_pred = beta_0_hat + beta_1_hat * x_true
+sigma_hat_sq = np.sum((y - (beta_0_hat + x * beta_1_hat)) ** 2) / (n_samples - 2)
+sigma_hat = np.sqrt(sigma_hat_sq)
+ss_res = np.sum((y - y_pred) ** 2)
+ss_tot = np.sum((y - np.mean(y)) ** 2)
+R2 = 1 - (ss_res / ss_tot) if ss_tot != 0 else 0
+
+alpha = 1 - ${confidence} / 100
+t_crit = stats.t.ppf(1 - alpha / 2, df=n_samples - 2)
+
+se = sigma_hat * np.sqrt(1 / n_samples + (x_true - xbar) ** 2 / sxx)
+
+ci_upper = y_all_pred + t_crit * se
+ci_lower = y_all_pred - t_crit * se
+#ci_upper = y_all_pred + 2
+#ci_lower = y_all_pred - 2
+
+# Intervalle de prédiction
+pi_upper = y_all_pred + t_crit * sigma_hat * np.sqrt(1 + 1 / n_samples + (x_true - xbar) ** 2 / sxx)
+pi_lower = y_all_pred - t_crit * sigma_hat * np.sqrt(1 + 1 / n_samples + (x_true - xbar) ** 2 / sxx)
+
+# Create the plot
+
+fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
+ax.plot(x_true, y_true, color="g", label="Vérité", lw=5)
+ax.plot(x_true, beta_1_hat*x_true + beta_0_hat, label="MCO", color="red", lw=5)
+ax.scatter(x, y, label="Échantillons")
+if ${display_conf}:
+    ax.fill_between(x_true, pi_upper, pi_lower, color="C1", alpha=0.4, label='Int. Pred.')
+if ${display_pred}:
+    ax.fill_between(x_true, ci_upper, ci_lower, color="C0", alpha=0.4, label='Int. Conf.')
+
+print(ci_upper)
+# Configure the plot
+ax.set_title("Régression linéaire")
+ax.set_xlabel("$x$: Prédicteur")
+ax.set_ylabel("$y$: Réponse")
+ax.legend()
+
+# Display grid
+ax.grid(True)
+
+# Convert the plot to PNG and display it
+buf = io.BytesIO()
+fig.savefig(
+    buf,
+    format="png",
+    facecolor='none',
+    bbox_inches="tight",
+    dpi=300,
+)
+buf.seek(0)
+img_b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+document.getElementById("plot").src = "data:image/png;base64," + img_b64
+
+# Store variables in a global variable accessible from JavaScript
+window.variablesResult = json.dumps({
+    "beta_0": float(beta0),
+    "beta_1": float(beta1),
+    "sigma": float(sigma),
+    "hat{beta}_0": float(beta_0_hat),
+    "hat{beta}_1": float(beta_1_hat),
+    "hat{sigma}": float(sigma_hat),
+    "R^2": float(R2)
+})
+`;
+      }
+
+      // Show/hide Python code
+      // showBtn.addEventListener('click', () => {
+      //   const visible = codeEl.style.display !== 'none';
+      //   if (visible) {
+      //     codeEl.style.display = 'none';
+      //     showBtn.textContent = 'Voir le code Python';
+      //   } else {
+      //     const beta0 = beta0Slider.value;
+      //     const beta1 = beta1Slider.value;
+      //     const sigma = Math.exp(sigmaMinLog + (sigmaSlider.value / sigmaSliderRange) * (sigmaMaxLog - sigmaMinLog));
+      //     const N = Math.round(Math.exp(NMinLog + (NSlider.value / NSliderRange) * (NMaxLog - NMinLog)));
+      //     codeEl.textContent = getPythonCode(beta0, beta1, sigma, N);
+      //     codeEl.style.display = 'block';
+      //     showBtn.textContent = 'Masquer le code';
+      //   }
+      // });
+
+      // Update plot and variables table
+      updateBtn.addEventListener('click', async () => {
+        if (!pyodideReady) return;
+        await runDemo(pyodideReady);
+      });
+
+      // Function to display logs
+      function log(msg) {
+        statusEl.textContent += msg + "\n";
+      }
+
+      // Update loading phase
+      function setPhase(text, done = false) {
+        phaseEl.textContent = text;
+        spinnerEl.style.visibility = done ? 'hidden' : 'visible';
+      }
+
+      // Load Pyodide and libraries
+      async function ensurePyodide() {
+        setPhase('Chargement de Pyodide...');
+        const pyodide = await loadPyodide({
+          indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.26.2/full/'
+        });
+        setPhase('Chargement des bibliothèques...');
+        await pyodide.loadPackage(['numpy', 'matplotlib', "scipy"]);
+        setPhase('Prêt', true);
+        rerunBtn.disabled = false;
+        updateBtn.disabled = false;
+        return pyodide;
+      }
+
+      // Run Python code to generate the plot and update the table
+      async function runDemo(pyodide) {
+        statusEl.textContent = '';
+        log('# Environnement Python prêt');
+        log('• numpy ' + pyodide.runPython('import numpy as np; np.__version__'));
+        log('• matplotlib ' + pyodide.runPython('import matplotlib as m; m.__version__'));
+
+        // Get actual values (logarithmic for sigma and N)
+        const beta0 = beta0Slider.value;
+        const beta1 = beta1Slider.value;
+        const sigma = Math.exp(sigmaMinLog + (sigmaSlider.value / sigmaSliderRange) * (sigmaMaxLog - sigmaMinLog));
+        const N = Math.round(Math.exp(NMinLog + (NSlider.value / NSliderRange) * (NMaxLog - NMinLog)));
+        const confidence = confidenceSlider.value;
+
+        log('\nGénération du graphique...');
+        try {
+          const code = getPythonCode(beta0, beta1, sigma, N, confidence, 0, 0);
+          await pyodide.runPythonAsync(code);
+
+          // Retrieve variables from the global variable
+          const variablesJson = window.variablesResult;
+          const variables = JSON.parse(variablesJson);
+
+          // Update the variables table
+          variablesTableBody.innerHTML = '';
+          for (const [key, value] of Object.entries(variables)) {
+            const row = document.createElement('tr');
+            const keyCell = document.createElement('td');
+            const valueCell = document.createElement('td');
+
+            // Map keys to LaTeX expressions
+            const latexMap = {
+              "beta_0": "\\beta_0",
+              "beta_1": "\\beta_1",
+              "sigma": "\\sigma",
+              "hat{beta}_0": "\\hat{\\beta}_0",
+              "hat{beta}_1": "\\hat{\\beta}_1",
+              "hat{sigma}": "\\hat{\\sigma}",
+              "R^2": "R^2"
+            };
+
+            // Use LaTeX expression for the key
+            const formattedKey = latexMap[key] || key;
+            keyCell.innerHTML = `\\(${formattedKey}\\)`;
+
+            if (Array.isArray(value)) {
+              valueCell.textContent = `[${value.map(v => v.toFixed(4)).join(', ')}]`;
+            } else {
+              const formattedValue = typeof value === 'number'
+                ? value.toFixed(4)
+                : value;
+              valueCell.textContent = formattedValue;
+            }
+
+            row.appendChild(keyCell);
+            row.appendChild(valueCell);
+            variablesTableBody.appendChild(row);
+          }
+
+          // Re-render MathJax
+          if (typeof MathJax !== 'undefined') {
+            MathJax.typesetPromise([variablesTableBody]).catch((err) => console.error(err));
+          }
+
+          log('Terminé. Graphique et tableau mis à jour.');
+        } catch (err) {
+          console.error(err);
+          log('Erreur : ' + err);
+        }
+      }
+
+      // Initialization
+      let pyodideReady = null;
+      (async () => {
+        pyodideReady = await ensurePyodide();
+        await runDemo(pyodideReady);
+      })();
+
+      // Rerun the demo
+      rerunBtn.addEventListener('click', async () => {
+        if (!pyodideReady) return;
+        await runDemo(pyodideReady);
+      });
+    </script>
+  </body>
+</html>
