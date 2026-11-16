@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Estimation</title>
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --card: #f8f9fa;
+        --text: #212529;
+        --muted: #6c757d;
+        --accent: #0d6efd;
+        --border: #dee2e6;
+      }
+
+      html, body {
+        height: 100%;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+        display: flex;
+        flex-direction: column;
+      }
+
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 32px 16px 60px;
+        flex: 1;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      header .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 16px rgba(13, 110, 253, 0.5);
+      }
+
+      h1 {
+        font-size: clamp(22px, 3.2vw, 34px);
+        margin: 0;
+        letter-spacing: 0.2px;
+        color: var(--text);
+      }
+
+      p.lead {
+        color: var(--muted);
+        margin: 6px 0 22px;
+      }
+
+      /* Style pour le sélecteur de loi */
+      .law-selector {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 18px;
+        padding: 12px;
+        background: var(--card);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+
+      .law-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .law-option input[type="radio"] {
+        cursor: pointer;
+      }
+
+      .law-option label {
+        cursor: pointer;
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      @media (min-width: 920px) {
+        .row {
+          grid-template-columns: 360px 1fr;
+        }
+      }
+
+      .status {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 14px;
+        line-height: 1.4;
+        color: var(--muted);
+        white-space: pre-wrap;
+        background: #fff;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+      }
+
+      .spinner {
+        width: 14px;
+        height: 14px;
+        border: 2px solid var(--border);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .imgwrap {
+        display: grid;
+        place-items: center;
+        min-height: 420px;
+        background: var(--card);
+        border-radius: 14px;
+        border: 1px dashed var(--border);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+      }
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .controls label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        color: var(--text);
+      }
+
+      .controls input[type="range"] {
+        width: 100%;
+        cursor: pointer;
+        accent-color: var(--accent);
+      }
+
+      .controls select,
+      .controls button {
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        font-family: inherit;
+      }
+
+      .controls button {
+        cursor: pointer;
+        background: var(--accent);
+        color: white;
+        border: 1px solid var(--accent);
+        transition: background 0.2s ease;
+      }
+
+      .checkbox-container,
+      .radio-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .checkbox-container label,
+      .radio-container label {
+        cursor: pointer;
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      .controls button:hover {
+        background: #0b5ed7;
+      }
+
+      .controls button:active {
+        transform: translateY(1px);
+      }
+
+      .slider-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .slider-value {
+        font-size: 12px;
+        color: var(--muted);
+        text-align: right;
+      }
+
+      .footnote {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+
+      /* Style for the variables table */
+      .variables-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 12px;
+        color: var(--text);
+      }
+
+      .variables-table th,
+      .variables-table td {
+        border: 1px solid var(--border);
+        padding: 8px;
+        text-align: left;
+      }
+
+      .variables-table th {
+        background: var(--card);
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .variables-table tr:nth-child(even) {
+        background: #fff;
+      }
+
+      /* Footer style */
+      footer {
+        background: var(--card);
+        border-top: 1px solid var(--border);
+        padding: 16px;
+        text-align: center;
+        font-size: 14px;
+        color: var(--muted);
+        margin-top: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <span class="dot"></span>
+        <h1>Estimation
+        </h1>
+      </header>
+
+      <!-- Radio buttons pour choisir la loi -->
+      <div class="law-selector">
+        <div class="law-option">
+          <input type="radio" id="uniform-law" name="law-type" value="uniform" checked>
+          <label for="uniform-law">Loi uniforme \(\mathcal{U}([0, a])\)</label>
+        </div>
+        <div class="law-option">
+          <input type="radio" id="gaussian-law" name="law-type" value="gaussian">
+          <label for="gaussian-law">Loi gaussienne \(\mathcal{N}(\mu, \sigma^2)\)</label>
+        </div>
+      </div>
+
+      <p class="lead" id="problem-description">
+        On a des échantillons \(X_n \sim \mathcal{U}([0, a])\) pour \(1 \leq n \leq N\) et on souhaite estimer \(a\), qui est inconnu, à partir des échantillons.
+      </p>
+
+      <div class="row">
+        <div class="card">
+          <div class="badge">
+            <span class="spinner" id="spinner"></span>
+            <span id="phase">Chargement de Pyodide...</span>
+          </div>
+          <pre class="status" id="status"></pre>
+
+          <div class="controls">
+            <!-- Paramètres pour la loi uniforme -->
+            <div id="uniform-parameters">
+              <div class="slider-container">
+                <label for="ub-slider">\(a\): <span id="ub-value" class="slider-value">5</span></label>
+                <input type="range" id="ub-slider" min="1" max="100" step="1" value="5">
+              </div>
+            </div>
+
+            <!-- Paramètres pour la loi gaussienne (masqués par défaut) -->
+            <div id="gaussian-parameters" style="display: none;">
+              <div class="slider-container">
+                <label for="mu-slider">\(\mu\): <span id="mu-value" class="slider-value">0</span></label>
+                <input type="range" id="mu-slider" min="-10" max="10" step="0.1" value="0">
+              </div>
+              <div class="slider-container">
+                <label for="sigma-slider">\(\sigma\): <span id="sigma-value" class="slider-value">1.0</span></label>
+                <input type="range" id="sigma-slider" min="0" max="100" step="1" value="44">
+              </div>
+            </div>
+
+            <!-- N Slider (Logarithmic) -->
+            <div class="slider-container">
+              <label for="N-slider">\(N\): <span id="N-value" class="slider-value">10</span></label>
+              <input type="range" id="N-slider" min="0" max="100" step="1" value="23">
+            </div>
+
+            <!-- Reps Slider (Logarithmic) -->
+            <div class="slider-container">
+              <label for="reps-slider">Réplications: <span id="reps-value" class="slider-value">3</span></label>
+              <input type="range" id="reps-slider" min="0" max="100" step="1" value="1">
+            </div>
+
+            <!-- Radio buttons for plot type -->
+            <div class="radio-container">
+              <input type="radio" id="show-samples-radio" name="plot-type" value="samples" checked>
+              <label for="show-samples-radio">Afficher les échantillons et les réplications</label>
+            </div>
+            <div class="radio-container">
+              <input type="radio" id="show-mco-radio" name="plot-type" value="mco">
+              <label for="show-mco-radio">Statistiques sur les estimateurs</label>
+            </div>
+
+            <!-- Checkboxes for additional options -->
+            <div class="checkbox-container">
+              <input type="checkbox" id="show-truth" checked>
+              <label for="show-truth">Afficher la vérité</label>
+            </div>
+
+            <button id="update-btn" class="btn">Ré-échantilloner</button>
+          </div>
+            
+            <div style="display:flex; gap:10px; margin-top:10px;">
+                  <button id="reset-btn" class="btn">Réinitialiser</button>
+          </div>
+
+
+          <pre class="status" id="pycode" style="display:none; margin-top:10px;"></pre>
+
+          <div class="footnote">
+            CDN : Pyodide, numpy et matplotlib sont chargés à la demande. Le premier chargement peut prendre quelques secondes.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="imgwrap">
+            <img id="plot" alt="Le graphique s'affichera ici" />
+          </div>
+          <!-- Variables table under the figure -->
+          <h3 style="margin-top: 20px; color: var(--text);">Estimation</h3>
+          <table class="variables-table">
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Valeur</th>
+              </tr>
+            </thead>
+            <tbody id="variables-table-body">
+              <!-- Variables will be displayed here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer with your name -->
+    <footer>
+      Victor TRAPPLER, École des Mines de Saint-Étienne
+    </footer>
+
+    <!-- Pyodide runtime -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+    <script>
+      const statusEl = document.getElementById('status');
+      const phaseEl = document.getElementById('phase');
+      const spinnerEl = document.getElementById('spinner');
+      const updateBtn = document.getElementById('update-btn');
+      const plotEl = document.getElementById('plot');
+      const variablesTableBody = document.getElementById('variables-table-body');
+      const problemDescriptionEl = document.getElementById('problem-description');
+
+      // Sliders
+      const ubSlider = document.getElementById('ub-slider');
+      const muSlider = document.getElementById('mu-slider');
+      const sigmaSlider = document.getElementById('sigma-slider');
+      const NSlider = document.getElementById('N-slider');
+      const repsSlider = document.getElementById('reps-slider');
+
+      const ubValue = document.getElementById('ub-value');
+      const muValue = document.getElementById('mu-value');
+      const sigmaValue = document.getElementById('sigma-value');
+      const NValue = document.getElementById('N-value');
+      const repsValue = document.getElementById('reps-value');
+
+      // Radio buttons for law type
+      const lawTypeRadios = document.querySelectorAll('input[name="law-type"]');
+      let currentLawType = 'uniform'; // Default: uniform law
+
+      // Radio buttons for plot type
+      const plotTypeRadios = document.querySelectorAll('input[name="plot-type"]');
+      let currentPlotType = 'samples'; // Default: show samples
+
+      // Checkboxes for additional options
+      const showTruthCheckbox = document.getElementById('show-truth');
+
+      // Parameter containers
+      const uniformParametersEl = document.getElementById('uniform-parameters');
+      const gaussianParametersEl = document.getElementById('gaussian-parameters');
+
+      // Define logarithmic scales
+      const sigmaMinLog = Math.log(0.1);
+      const sigmaMaxLog = Math.log(10);
+      const sigmaSliderRange = 100;
+
+      const NMinLog = Math.log(3);
+      const NMaxLog = Math.log(1000);
+      const repsMinLog = Math.log(1);
+      const repsMaxLog = Math.log(300);
+
+      const NSliderRange = 100;
+      const repsSliderRange = 100;
+
+      // Update displayed slider values
+      ubSlider.addEventListener('input', () => {
+        ubValue.textContent = ubSlider.value;
+      });
+
+      muSlider.addEventListener('input', () => {
+        muValue.textContent = muSlider.value;
+      });
+
+      sigmaSlider.addEventListener('input', () => {
+        const logValue = sigmaMinLog + (sigmaSlider.value / sigmaSliderRange) * (sigmaMaxLog - sigmaMinLog);
+        const actualValue = Math.exp(logValue);
+        sigmaValue.textContent = actualValue.toFixed(3);
+      });
+
+      NSlider.addEventListener('input', () => {
+        const logValue = NMinLog + (NSlider.value / NSliderRange) * (NMaxLog - NMinLog);
+        const actualValue = Math.round(Math.exp(logValue));
+        NValue.textContent = actualValue;
+      });
+
+      repsSlider.addEventListener('input', () => {
+        const logValue = repsMinLog + (repsSlider.value / repsSliderRange) * (repsMaxLog - repsMinLog);
+        const actualValue = Math.round(Math.exp(logValue));
+        repsValue.textContent = actualValue;
+      });
+
+      // Initialize slider displays
+      const initialSigmaLog = sigmaMinLog + (sigmaSlider.value / sigmaSliderRange) * (sigmaMaxLog - sigmaMinLog);
+      sigmaValue.textContent = Math.exp(initialSigmaLog).toFixed(3);
+
+      const initialNLog = NMinLog + (NSlider.value / NSliderRange) * (NMaxLog - NMinLog);
+      NValue.textContent = Math.round(Math.exp(initialNLog));
+
+      const initialrepsLog = repsMinLog + (repsSlider.value / repsSliderRange) * (repsMaxLog - repsMinLog);
+      repsValue.textContent = Math.round(Math.exp(initialrepsLog));
+
+      // Listen for law type radio button changes
+      lawTypeRadios.forEach(radio => {
+        radio.addEventListener('change', (event) => {
+          currentLawType = event.target.value;
+          updateParameterVisibility();
+          updateProblemDescription();
+        });
+      });
+
+      // Listen for plot type radio button changes
+      plotTypeRadios.forEach(radio => {
+        radio.addEventListener('change', (event) => {
+          currentPlotType = event.target.value;
+        });
+      });
+
+      // Function to update parameter visibility based on law type
+      function updateParameterVisibility() {
+        if (currentLawType === 'uniform') {
+          uniformParametersEl.style.display = 'block';
+          gaussianParametersEl.style.display = 'none';
+        } else {
+          uniformParametersEl.style.display = 'none';
+          gaussianParametersEl.style.display = 'block';
+        }
+      }
+
+      // Function to update problem description based on law type
+      function updateProblemDescription() {
+        if (currentLawType === 'uniform') {
+          problemDescriptionEl.innerHTML = `On a des échantillons \\(X_n \\sim \\mathcal{U}([0, a])\\) pour \\(1 \\leq n \\leq N\\) et on souhaite estimer \\(a\\), qui est inconnu, à partir des échantillons.`;
+        } else {
+          problemDescriptionEl.innerHTML = `On a des échantillons \\(X_n \\sim \\mathcal{N}(\\mu, \\sigma^2)\\) pour \\(1 \\leq n \\leq N\\) et on souhaite estimer \\(\\mu\\) qui est inconnu, à partir des échantillons.`;
+        }
+        // Re-rendre MathJax
+        if (typeof MathJax !== 'undefined') {
+          MathJax.typesetPromise([problemDescriptionEl]).catch((err) => console.error(err));
+        }
+      }
+
+      // Python code to generate the plot and return variables
+      function getPythonCode(lawType, ub, mu, sigma, N, reps, display_truth) {
+        const showSamples = currentPlotType === 'samples';
+        const showMCO = currentPlotType === 'mco';
+
+        if (lawType === 'uniform') {
+          return `
+import numpy as np
+import json
+import matplotlib
+matplotlib.use("agg")
+import matplotlib.pyplot as plt
+from js import document, window
+import io, base64
+
+# Generate data for uniform law
+ub = ${ub}
+reps = ${reps}
+n_samples = ${N}
+colors = ['pink', 'lightblue', 'lightgreen']
+
+x_n = (np.random.rand(n_samples * reps) * ub).reshape(n_samples, reps)
+a_n = np.max(x_n, axis=0)
+astar_n = (n_samples + 1) * a_n / n_samples
+b_n = x_n.mean(0) * 2
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(4, 6), dpi=300)
+
+${showSamples ? `
+if reps*n_samples>=500:
+  ax.boxplot(x_n)
+else:
+  for i in range(reps):
+    ax.scatter((i+1)*np.ones(n_samples), x_n[:, i], c='k', alpha=0.5 if (reps>=20 or n_samples>=100) else 1.0, s=2 if (reps>=20 or n_samples>=100) else 20, label=r"$X_n$" if i==0 else None)
+for i in range(reps):
+  ax.scatter((i+1), a_n[i], marker="*", s=30, c=colors[0], label=r"$A_n$" if i==0 else None)
+  ax.scatter((i+1), b_n[i], marker="s", s=30, c=colors[1], label=r"$B_n$" if i==0 else None)
+  ax.scatter((i+1), astar_n[i], marker="<", s=30, c=colors[2], label=r"$A^*_n$" if i==0 else None)
+ax.set_ylim(0, 1.25*ub)
+ax.set_ylabel(r"$X_n$")
+ax.legend(bbox_to_anchor=(1.05, 1.05), ncol=1)
+ax.set_xlabel("Réplication")
+` : `
+bplot = ax.boxplot(np.stack([a_n, b_n, astar_n], axis=1), labels=[r"$A_n$", r"$B_n$", r"$A^*_n$"], patch_artist=True)
+for patch, color in zip(bplot['boxes'], colors):
+  patch.set_facecolor(color)
+ax.set_xlabel("Estimateur")
+ax.set_ylabel(r"Estimation")
+`}
+
+${display_truth ? `ax.axhline(ub, ls=":", c='k', lw=2, label="Vérité")` : ''}
+
+# Configure the plot
+ax.set_title(r"Estimation de $a$")
+ax.grid(visible=True, alpha=0.5)
+
+# Convert the plot to PNG and display it
+buf = io.BytesIO()
+fig.savefig(
+    buf,
+    format="png",
+    facecolor='none',
+    bbox_inches="tight",
+    dpi=300,
+)
+buf.seek(0)
+img_b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+document.getElementById("plot").src = "data:image/png;base64," + img_b64
+
+# Store variables in a global variable accessible from JavaScript
+window.variablesResult = json.dumps({
+    "a": float(ub),
+    "\\mathrm{Moyenne\\, empirique\\,} A_n": float(a_n.mean()),
+    "\\mathrm{Variance\\, empirique\\,} A_n": float(a_n.var()),
+    "\\mathrm{Moyenne\\, empirique\\,} B_n": float(b_n.mean()),
+    "\\mathrm{Variance\\, empirique\\,} B_n": float(b_n.var()),
+    "\\mathrm{Moyenne\\, empirique\\,} A^*_n": float(astar_n.mean()),
+    "\\mathrm{Variance\\, empirique\\,} A^*_n": float(astar_n.var()),
+})
+`;
+        } else {
+          return `
+import numpy as np
+import json
+import matplotlib
+matplotlib.use("agg")
+import matplotlib.pyplot as plt
+from js import document, window
+import io, base64
+
+# Generate data for Gaussian law
+mu = ${mu}
+sigma = ${sigma}
+reps = ${reps}
+n_samples = ${N}
+colors = ['pink', 'lightblue']
+
+x_n = np.random.normal(loc=mu, scale=sigma, size=(n_samples, reps))
+mu_hat = x_n.mean(axis=0)
+median_hat = np.quantile(x_n, 0.5, axis=0)
+# Create the plot
+fig, ax = plt.subplots(figsize=(4, 6), dpi=300)
+
+${showSamples ? `
+if reps*n_samples>=500:
+  ax.boxplot(x_n)
+else:
+  for i in range(reps):
+    ax.scatter((i+1)*np.ones(n_samples), x_n[:, i], c='k', alpha=0.5 if (reps>=20 or n_samples>=100) else 1.0, s=2 if (reps>=20 or n_samples>=100) else 10, label=r"$X_n$" if i==0 else None)
+for i in range(reps):
+  ax.scatter((i+1), mu_hat[i], marker="*", s=40, c=colors[0], label=r"Moyenne emp." if i==0 else None)
+  ax.scatter((i+1), median_hat[i], marker="*", s=40, c=colors[1], label=r"Médiane emp." if i==0 else None)
+
+ax.set_ylabel(r"$X_n$")
+ax.legend(bbox_to_anchor=(1.15, 1.05), ncol=1)
+ax.set_xlabel("Réplication")
+` : `
+bplot = ax.boxplot(np.stack([mu_hat, median_hat], axis=1), labels=[r"Moyenne", r"Médiane"], patch_artist=True)
+for patch, color in zip(bplot['boxes'], colors):
+  patch.set_facecolor(color)
+ax.set_xlabel("Estimateur")
+ax.set_ylabel(r"Estimation")
+`}
+
+${display_truth ? `ax.axhline(mu, ls=":", c='k', lw=2, label="Vérité ($\mu$)")` : ''}
+
+# Configure the plot
+ax.set_title(r"Estimation de $\\mu$")
+ax.grid(visible=True, alpha=0.5)
+
+# Convert the plot to PNG and display it
+buf = io.BytesIO()
+fig.savefig(
+    buf,
+    format="png",
+    facecolor='none',
+    bbox_inches="tight",
+    dpi=300,
+)
+buf.seek(0)
+img_b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+document.getElementById("plot").src = "data:image/png;base64," + img_b64
+
+# Store variables in a global variable accessible from JavaScript
+window.variablesResult = json.dumps({
+    "\\mu": float(mu),
+    "\\sigma": float(sigma),
+    "\\mathrm{Moyenne\\, empirique\\,} \\hat{\\mu}": float(mu_hat.mean()),
+    "\\mathrm{Variance\\, empirique\\,} \\hat{\\mu}": float(mu_hat.var()),
+    "\\mathrm{Moyenne\\, empirique\\,} \\hat{\\sigma}": float(median_hat.mean()),
+    "\\mathrm{Variance\\, empirique\\,} \\hat{\\sigma}": float(median_hat.var()),
+})
+`;
+        }
+      }
+// Fonction pour réinitialiser tous les paramètres
+function resetParameters() {
+  // Réinitialiser les sliders et leurs valeurs affichées
+  ubSlider.value = 5;
+  ubValue.textContent = ubSlider.value;
+
+  muSlider.value = 0;
+  muValue.textContent = muSlider.value;
+
+  sigmaSlider.value = 44; // Valeur par défaut pour sigma (logarithmique)
+  const initialSigmaLog = sigmaMinLog + (sigmaSlider.value / sigmaSliderRange) * (sigmaMaxLog - sigmaMinLog);
+  sigmaValue.textContent = Math.exp(initialSigmaLog).toFixed(3);
+
+  NSlider.value = 23; // Valeur par défaut pour N (logarithmique)
+  const initialNLog = NMinLog + (NSlider.value / NSliderRange) * (NMaxLog - NMinLog);
+  NValue.textContent = Math.round(Math.exp(initialNLog));
+
+  repsSlider.value = 2.18; // Valeur par défaut pour reps (logarithmique)
+  const initialrepsLog = repsMinLog + (repsSlider.value / repsSliderRange) * (repsMaxLog - repsMinLog);
+  repsValue.textContent = Math.round(Math.exp(initialrepsLog));
+
+  // Réinitialiser les radio buttons
+  document.getElementById('uniform-law').checked = true;
+  currentLawType = 'uniform';
+  updateParameterVisibility();
+  updateProblemDescription();
+
+  document.getElementById('show-samples-radio').checked = true;
+  currentPlotType = 'samples';
+
+  // Réinitialiser les checkboxes
+  showTruthCheckbox.checked = true;
+}
+      // Function to display logs
+      function log(msg) {
+        statusEl.textContent += msg + "\n";
+      }
+
+      // Update loading phase
+      function setPhase(text, done = false) {
+        phaseEl.textContent = text;
+        spinnerEl.style.visibility = done ? 'hidden' : 'visible';
+      }
+
+      // Load Pyodide and libraries
+      async function ensurePyodide() {
+        setPhase('Chargement de Pyodide...');
+        const pyodide = await loadPyodide({
+          indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.26.2/full/'
+        });
+        setPhase('Chargement des bibliothèques...');
+        await pyodide.loadPackage(['numpy', 'matplotlib']);
+        setPhase('Prêt', true);
+        updateBtn.disabled = false;
+        return pyodide;
+      }
+
+      // Run Python code to generate the plot and update the table
+      async function runDemo(pyodide) {
+        statusEl.textContent = '';
+        log('# Environnement Python prêt');
+
+        // Get actual values (logarithmic for sigma and N)
+        const N = Math.round(Math.exp(NMinLog + (NSlider.value / NSliderRange) * (NMaxLog - NMinLog)));
+        const reps = Math.round(Math.exp(repsMinLog + (repsSlider.value / repsSliderRange) * (repsMaxLog - repsMinLog)));
+        const showTruth = showTruthCheckbox.checked;
+
+        let lawParams;
+        if (currentLawType === 'uniform') {
+          lawParams = {
+            lawType: 'uniform',
+            ub: ubSlider.value,
+            mu: 0, // Not used for uniform
+            sigma: 0, // Not used for uniform
+          };
+        } else {
+          lawParams = {
+            lawType: 'gaussian',
+            ub: 0, // Not used for Gaussian
+            mu: muSlider.value,
+            sigma: Math.exp(sigmaMinLog + (sigmaSlider.value / sigmaSliderRange) * (sigmaMaxLog - sigmaMinLog)),
+          };
+        }
+
+        log('\nGénération du graphique...');
+        if (N*reps>=500 & currentPlotType=="samples"){
+          log("\nTrop de points à afficher, passage en boîtes à moustaches")
+        }
+        try {
+          const code = getPythonCode(
+            lawParams.lawType,
+            lawParams.ub,
+            lawParams.mu,
+            lawParams.sigma,
+            N,
+            reps,
+            showTruth
+          );
+          await pyodide.runPythonAsync(code);
+
+          // Retrieve variables from the global variable
+          const variablesJson = window.variablesResult;
+          const variables = JSON.parse(variablesJson);
+
+          // Update the variables table
+          variablesTableBody.innerHTML = '';
+          for (const [key, value] of Object.entries(variables)) {
+            const row = document.createElement('tr');
+            const keyCell = document.createElement('td');
+            const valueCell = document.createElement('td');
+
+            keyCell.innerHTML = `\\(${key}\\)`;
+            valueCell.textContent = typeof value === 'number' ? value.toFixed(4) : value;
+
+            row.appendChild(keyCell);
+            row.appendChild(valueCell);
+            variablesTableBody.appendChild(row);
+          }
+
+          // Re-render MathJax
+          if (typeof MathJax !== 'undefined') {
+            MathJax.typesetPromise([variablesTableBody]).catch((err) => console.error(err));
+          }
+
+          log('Terminé. Graphique et tableau mis à jour.');
+        } catch (err) {
+          console.error(err);
+          log('Erreur : ' + err);
+        }
+      }
+
+      // Initialization
+      let pyodideReady = null;
+      (async () => {
+        pyodideReady = await ensurePyodide();
+          resetParameters(); // Réinitialiser les paramètres au chargement
+        updateParameterVisibility();
+        updateProblemDescription();
+        await runDemo(pyodideReady);
+      })();
+
+      // Event listeners for buttons and checkboxes
+      updateBtn.addEventListener('click', async () => {
+        if (!pyodideReady) return;
+        await runDemo(pyodideReady);
+      });
+
+      showTruthCheckbox.addEventListener('change', async () => {
+        if (!pyodideReady) return;
+        await runDemo(pyodideReady);
+      });
+
+      plotTypeRadios.forEach(radio => {
+        radio.addEventListener('change', async () => {
+          if (!pyodideReady) return;
+          await runDemo(pyodideReady);
+        });
+      });
+
+      lawTypeRadios.forEach(radio => {
+        radio.addEventListener('change', async () => {
+          if (!pyodideReady) return;
+          await runDemo(pyodideReady);
+        });
+      });
+
+      // Écouteur pour le bouton "Réinitialiser"
+document.getElementById('reset-btn').addEventListener('click', async () => {
+  resetParameters();
+  if (pyodideReady) {
+    await runDemo(pyodideReady);
+  }
+});
+    </script>
+  </body>
+</html>
